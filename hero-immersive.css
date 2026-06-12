@@ -1,0 +1,166 @@
+/* MC3 immersive hero treatment
+   Add this file after styles.css in index.html:
+   <link href="hero-immersive.css" rel="stylesheet" />
+*/
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 78px);
+  padding: 88px 0 72px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg,
+      rgba(5, 14, 35, 0.98) 0%,
+      rgba(7, 20, 48, 0.94) 30%,
+      rgba(7, 20, 48, 0.58) 52%,
+      rgba(7, 20, 48, 0.20) 78%,
+      rgba(7, 20, 48, 0.55) 100%
+    ),
+    radial-gradient(circle at 72% 35%, rgba(31, 111, 235, 0.34), transparent 34%),
+    radial-gradient(circle at 88% 22%, rgba(196, 90, 18, 0.34), transparent 28%),
+    #061329;
+  border-bottom: 1px solid rgba(234, 244, 255, 0.12);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-image: url("assets/hero-data-flow.png");
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  opacity: 0.98;
+  transform: scale(1.035);
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg,
+      #061329 0%,
+      rgba(6, 19, 41, 0.94) 15%,
+      rgba(6, 19, 41, 0.66) 34%,
+      rgba(6, 19, 41, 0.18) 58%,
+      rgba(6, 19, 41, 0.42) 100%
+    ),
+    radial-gradient(circle at 50% 50%, transparent 42%, rgba(6, 19, 41, 0.72) 100%),
+    linear-gradient(180deg, rgba(6, 19, 41, 0.1) 0%, rgba(6, 19, 41, 0.86) 100%);
+}
+
+.hero-grid {
+  position: relative;
+  min-height: calc(100vh - 238px);
+  display: grid;
+  grid-template-columns: minmax(320px, 0.92fr) minmax(280px, 1.08fr);
+  align-items: center;
+  text-align: left;
+}
+
+.hero-grid::after {
+  content: "";
+  position: absolute;
+  inset: -80px -12vw -72px -12vw;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg,
+      transparent 0%,
+      rgba(0, 194, 255, 0.08) 35%,
+      rgba(255, 132, 39, 0.10) 48%,
+      rgba(0, 194, 255, 0.08) 60%,
+      transparent 78%
+    );
+  background-size: 180% 180%;
+  animation: dataFlow 9s ease-in-out infinite;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+.hero-copy {
+  max-width: 620px;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  color: #ffffff;
+  max-width: 620px;
+  text-shadow: 0 12px 34px rgba(0, 0, 0, 0.34);
+}
+
+.hero-text-carousel {
+  max-width: 560px;
+  margin: 28px 0 0;
+}
+
+.carousel-line {
+  justify-content: flex-start;
+  color: #ffffff !important;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.hero-actions {
+  justify-content: flex-start;
+  margin: 34px 0 0;
+}
+
+.trust-row {
+  display: none;
+}
+
+@keyframes dataFlow {
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.55;
+  }
+
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.9;
+  }
+
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.55;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+    padding: 72px 0 64px;
+  }
+
+  .hero-grid {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .hero::before {
+    background-position: center right;
+    opacity: 0.65;
+  }
+
+  .hero::after {
+    background:
+      linear-gradient(180deg,
+        rgba(6, 19, 41, 0.94) 0%,
+        rgba(6, 19, 41, 0.82) 45%,
+        rgba(6, 19, 41, 0.94) 100%
+      );
+  }
+
+  .hero-copy,
+  .hero h1 {
+    max-width: 100%;
+  }
+}
