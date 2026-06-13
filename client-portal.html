@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <meta content="Client portal for Momentum Data Solutions projects." name="description" />
-  <title>Client Portal | Momentum Data Solutions</title>
+  <title>Client Portfolio Service Manager | Momentum Data Solutions</title>
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;display=swap"
@@ -15,6 +15,7 @@
   <link href="client-portal-overrides.css" rel="stylesheet" />
   <link href="client-portfolio-menu.css" rel="stylesheet" />
   <link href="client-portfolio-greeting.css" rel="stylesheet" />
+  <link href="cpsm.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -55,7 +56,7 @@
   <main class="client-portal-main clean-card-portal">
     <section class="client-portal-dashboard" aria-labelledby="clientWelcome">
       <div class="container">
-        <div class="portal-heading-bar">
+        <div class="portal-heading-bar" id="dashboard">
           <h1 id="clientWelcome">Hi, Client, welcome to your project.</h1>
 
           <form class="portal-google-search" action="https://www.google.com/search" method="get" target="_blank" rel="noopener" role="search">
@@ -65,6 +66,15 @@
             <span>Powered by Google</span>
           </form>
         </div>
+
+        <section class="cpsm-maintenance-alert" id="cpsmMaintenanceNotice" aria-labelledby="cpsmMaintenanceTitle">
+          <div>
+            <h2 id="cpsmMaintenanceTitle">Notification of Scheduled Maintenance</h2>
+            <p>Client Portfolio Service Manager (CP&#83;M) will undergo scheduled update on July 24, 2026. Users may continue to utilize CP&#83;M, but may experience intermittent and or lagging business processes.</p>
+            <p id="cpsmMaintenanceConfirmText">Please acknowledge that you have reviewed this notice.</p>
+          </div>
+          <button class="btn primary cpsm-confirm-btn" id="cpsmMaintenanceConfirm" type="button">Acknowledge</button>
+        </section>
 
         <div class="portal-workspace">
           <div class="portal-main-content">
@@ -103,6 +113,30 @@
                   <li>Confirm preferred delivery format</li>
                   <li>Send any additional source files</li>
                 </ul>
+              </section>
+
+              <section class="portal-tile portal-tile-wide" id="clientFeedback">
+                <h2>Client Feedback</h2>
+                <p>Submit feedback, questions, or follow-up notes for your Client Portfolio Service Manager workspace.</p>
+                <form class="cpsm-feedback-form" id="cpsmFeedbackForm">
+                  <label for="feedbackTopic">
+                    Feedback topic
+                    <select id="feedbackTopic" name="feedbackTopic" required>
+                      <option value="">Select a topic</option>
+                      <option>Project status</option>
+                      <option>Deliverables</option>
+                      <option>System access</option>
+                      <option>Scheduled maintenance</option>
+                      <option>Other</option>
+                    </select>
+                  </label>
+                  <label for="feedbackMessage">
+                    Message
+                    <textarea id="feedbackMessage" name="feedbackMessage" rows="4" placeholder="Enter your feedback or question." required></textarea>
+                  </label>
+                  <button class="btn primary" type="submit">Submit feedback</button>
+                  <p class="cpsm-feedback-confirmation" id="cpsmFeedbackConfirmation" hidden>Feedback received for this preview session.</p>
+                </form>
               </section>
             </div>
           </div>
@@ -171,6 +205,14 @@
     </div>
 
     <div class="portal-panel-sections">
+      <section class="side-panel-card">
+        <h2>Client Portfolio Service Manager</h2>
+        <nav class="portal-panel-nav" aria-label="Client Portfolio Service Manager sections">
+          <a href="#dashboard"><strong>Dashboard</strong><span>View</span></a>
+          <a href="#clientFeedback"><strong>Client Feedback</strong><span>Open</span></a>
+        </nav>
+      </section>
+
       <section class="side-panel-card tools-card">
         <h2>Tools</h2>
         <div class="tool-link-list">
@@ -233,6 +275,7 @@
 
   <script src="script.js"></script>
   <script src="client-portfolio-menu.js"></script>
+  <script src="cpsm-interactions.js"></script>
 </body>
 
 </html>
