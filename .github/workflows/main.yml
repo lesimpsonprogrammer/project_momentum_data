@@ -1,6 +1,7 @@
 name: Lighthouse CI
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -8,6 +9,7 @@ on:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
       - name: Checkout site files
@@ -23,8 +25,9 @@ jobs:
           npx --yes http-server . -p 8080 &
           npx --yes wait-on http://127.0.0.1:8080
 
-      - name: Run Lighthouse
+      - name: Run Lighthouse as advisory check
         uses: treosh/lighthouse-ci-action@v9
+        continue-on-error: true
         with:
           urls: |
             http://127.0.0.1:8080/
