@@ -136,7 +136,7 @@ if (carouselLines.length > 0) {
     carouselLines[currentLine].classList.remove('active');
     currentLine = (currentLine + 1) % carouselLines.length;
     carouselLines[currentLine].classList.add('active');
-  }, 3500);
+  }, 5200);
 }
 
 const cookieNotice = document.querySelector('#cookieNotice');
