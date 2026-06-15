@@ -23,6 +23,34 @@ html {
   scroll-behavior: smooth;
 }
 
+css
+
+/* Ensure the body takes full viewport height */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Define the grid container */
+.split-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Two equal columns */
+  height: 100vh;
+  /* Full viewport height */
+}
+
+/* Optional styling to visualize the split */
+.left-side {
+  background-color: #f0f0f0;
+}
+
+.right-side {
+  background-color: #dddddd;
+}
+
 .cookie-banner {
   position: fixed;
   left: 50%;
