@@ -1,0 +1,28 @@
+/* Settings page styles */
+.settings-page-card {
+  width: min(980px, 100%);
+}
+.settings-config-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.settings-config-list section {
+  padding: 1.1rem;
+  border: 1px solid #b0b8c4;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.78);
+}
+.settings-config-list h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.2rem;
+}
+.settings-config-list p {
+  margin: 0;
+}
+@media (max-width: 760px) {
+  .settings-config-list {
+    grid-template-columns: 1fr;
+  }
+}
