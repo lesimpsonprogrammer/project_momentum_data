@@ -6,6 +6,19 @@
   const feedbackConfirmation = document.querySelector('#cpsmFeedbackConfirmation');
   const noticeKey = 'cpsmNoticeConfirmedBefore20260724';
 
+  const portalNav = document.querySelector('.portal-panel-nav');
+  if (portalNav && !portalNav.querySelector('a[href="settings.html"]')) {
+    const settingsLink = document.createElement('a');
+    const settingsLabel = document.createElement('strong');
+    const settingsAction = document.createElement('span');
+    settingsLink.href = 'settings.html';
+    settingsLabel.textContent = 'Settings & Configuration';
+    settingsAction.textContent = 'Open';
+    settingsLink.appendChild(settingsLabel);
+    settingsLink.appendChild(settingsAction);
+    portalNav.appendChild(settingsLink);
+  }
+
   if (notice && confirmButton) {
     const alreadyConfirmed = localStorage.getItem(noticeKey) === 'true';
 
