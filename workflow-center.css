@@ -9,9 +9,30 @@
   margin-bottom: 1.5rem;
 }
 
+.workflow-main h2,
+.workflow-main h3,
+.workflow-section-heading h2,
+.workflow-column h2,
+.saved-workflow-card h3,
+.workflow-rule-builder h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--text);
+}
+
 .workflow-section-heading h2 {
   margin: 0.15rem 0 1rem;
-  font-size: clamp(1.55rem, 2.2vw, 2.15rem);
+  font-size: clamp(1.35rem, 1.8vw, 1.85rem);
+}
+
+.workflow-main .tile-kicker,
+.workflow-dashboard span,
+.workflow-condition-row span,
+.saved-workflow-card span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .workflow-empty-state {
@@ -46,13 +67,12 @@
   background: var(--light-blue);
   color: var(--blue);
   font-size: 0.72rem;
-  font-weight: 800;
   text-transform: uppercase;
 }
 
 .saved-workflow-card h3 {
   margin: 0 0 0.35rem;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
 }
 
 .saved-workflow-card p,
@@ -80,7 +100,7 @@
   background: #ffffff;
   color: var(--text);
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -101,7 +121,7 @@
   gap: 0.45rem;
   color: var(--text);
   font-size: 0.86rem;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .workflow-rule-builder input,
@@ -141,7 +161,6 @@
 .workflow-condition-row span {
   color: var(--blue);
   font-size: 0.78rem;
-  font-weight: 900;
 }
 
 .workflow-save-confirmation {
@@ -172,7 +191,7 @@
   margin-top: 0.6rem;
   color: var(--muted);
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 @media (max-width: 980px) {
