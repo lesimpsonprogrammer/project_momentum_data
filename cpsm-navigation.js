@@ -2,10 +2,10 @@
   const navItems = [
     ['client-portal.html', 'Dashboard'],
     ['workflow.html', 'Workflow Center'],
-    ['create-workflow.html', 'Create Workflow'],
-    ['workflow-archive.html', 'Workflow Archive'],
-    ['workflow-settings.html', 'Workflow Settings'],
+    ['project-management.html', 'Project Management'],
+    ['financial-management.html', 'Financial Management'],
     ['client-profile-directory.html', 'Client Directory'],
+    ['settings.html', 'Settings & Configuration'],
     ['configure-client.html', 'Configure Client'],
   ];
 
