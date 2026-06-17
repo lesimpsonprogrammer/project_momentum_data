@@ -36,6 +36,40 @@
     });
   }
 
+  function buildPortalSideMenu() {
+    const main = document.querySelector('.client-portal-main');
+    const header = document.querySelector('.client-portfolio-header');
+    if (!main || !header || document.querySelector('.cpsm-portal-shell')) return;
+
+    const shell = document.createElement('div');
+    const sideNav = document.createElement('aside');
+    const brand = document.createElement('div');
+    const nav = document.createElement('nav');
+
+    shell.className = 'cpsm-portal-shell';
+    sideNav.className = 'workflow-sidebar cpsm-portal-side-nav';
+    brand.className = 'workflow-sidebar-brand';
+    nav.className = 'workflow-side-nav cpsm-portal-side-menu';
+    brand.innerHTML = '<strong>CPSM</strong><span>Portal Menu</span>';
+
+    navItems.forEach(([href, label]) => {
+      const link = document.createElement('a');
+      link.href = href;
+      link.textContent = label;
+      if (window.location.pathname.endsWith(href)) link.classList.add('active');
+      nav.appendChild(link);
+    });
+
+    sideNav.appendChild(brand);
+    sideNav.appendChild(nav);
+    header.after(shell);
+    shell.appendChild(sideNav);
+    shell.appendChild(main);
+    document.body.classList.add('cpsm-portal-side-menu-enabled');
+  }
+
+  buildPortalSideMenu();
+
   if (!document.querySelector('.cpsm-footer')) {
     const footer = document.createElement('footer');
     const small = document.createElement('small');
