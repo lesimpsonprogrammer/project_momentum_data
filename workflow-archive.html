@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Workflow Archive</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link href="client-portal-overrides.css" rel="stylesheet" />
+  <link href="settings.css" rel="stylesheet" />
+  <link href="workflow-center.css" rel="stylesheet" />
+</head>
+<body class="workflow-dashboard-page">
+  <div class="workflow-shell">
+    <aside class="workflow-sidebar">
+      <div class="workflow-sidebar-brand"><strong>CPSM</strong><span>Workflow Center</span></div>
+      <nav class="workflow-side-nav">
+        <a href="workflow.html">Workflow Dashboard</a>
+        <a href="create-workflow.html">Create Workflow</a>
+        <a class="active" href="workflow-archive.html">Workflow Archive</a>
+        <a href="workflow-settings.html">Workflow Settings</a>
+        <a href="client-portal.html">Back to CPSM</a>
+      </nav>
+    </aside>
+    <main class="workflow-main">
+      <header class="workflow-topbar">
+        <div><p class="tile-kicker">Inactive Workflows</p><h1>Workflow Archive</h1><p>Inactive workflows are stored here. Restore options are managed in Workflow Settings.</p></div>
+        <a class="btn primary" href="workflow-settings.html">Workflow Settings</a>
+      </header>
+      <section class="workflow-list-panel">
+        <div class="workflow-section-heading"><p class="tile-kicker">Archive</p><h2>Inactive Workflows</h2></div>
+        <div class="workflow-empty-state" id="archiveEmptyState">No inactive workflows have been archived yet.</div>
+        <div class="workflow-saved-list" id="workflowArchiveList"></div>
+      </section>
+    </main>
+  </div>
+  <script src="workflow-center.js"></script>
+</body>
+</html>
