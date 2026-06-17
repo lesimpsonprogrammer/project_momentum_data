@@ -66,6 +66,156 @@
   font-size: 0.86rem;
   line-height: 1.45;
 }
+.workflow-dashboard-page {
+  background: #f6f7fb;
+}
+.workflow-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 255px minmax(0, 1fr);
+}
+.workflow-sidebar {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  padding: 1.25rem;
+  border-right: 1px solid #d9dee7;
+  background: #ffffff;
+}
+.workflow-sidebar-brand {
+  display: grid;
+  gap: 0.2rem;
+  margin-bottom: 1.5rem;
+}
+.workflow-sidebar-brand strong {
+  font-size: 1rem;
+  color: var(--blue-dark);
+}
+.workflow-sidebar-brand span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.workflow-side-nav {
+  display: grid;
+  gap: 0.35rem;
+}
+.workflow-side-nav a {
+  padding: 0.72rem 0.8rem;
+  border-radius: 0.7rem;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.workflow-side-nav a:hover,
+.workflow-side-nav a.active {
+  background: var(--light-blue);
+  color: var(--blue);
+}
+.workflow-main {
+  width: min(1360px, 100%);
+  margin: 0 auto;
+  padding: 2rem clamp(1.5rem, 4vw, 3.5rem) 3rem;
+}
+.workflow-topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.workflow-topbar h1 {
+  margin: 0.2rem 0 0.4rem;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 0.95;
+}
+.workflow-dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+.workflow-dashboard article,
+.workflow-column,
+.workflow-builder,
+.workflow-toolbar {
+  border: 1px solid #d9dee7;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(11, 31, 58, 0.06);
+}
+.workflow-dashboard article {
+  padding: 1rem;
+}
+.workflow-dashboard span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.workflow-dashboard strong {
+  display: block;
+  margin: 0.25rem 0;
+  color: var(--blue-dark);
+  font-size: 2rem;
+  line-height: 1;
+}
+.workflow-dashboard p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+.workflow-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+.workflow-toolbar input,
+.workflow-toolbar select {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #d9dee7;
+  border-radius: 0.75rem;
+  padding: 0 0.9rem;
+  background: #ffffff;
+}
+.workflow-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.workflow-column {
+  min-height: 360px;
+  padding: 1rem;
+}
+.workflow-column h2 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+}
+.workflow-column article {
+  padding: 0.9rem;
+  border: 1px solid #e2e7ef;
+  border-radius: 0.85rem;
+  background: #fbfcff;
+  margin-bottom: 0.8rem;
+}
+.workflow-column article strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+.workflow-column article p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+.workflow-builder {
+  padding: 1.35rem;
+  margin-bottom: 1.5rem;
+}
 body::after {
   content: "Client Portfolio Service Manager, a Momentum Data Solutions Software Company.";
   display: block;
@@ -79,6 +229,17 @@ body::after {
   text-align: center;
 }
 @media (max-width: 1080px) {
+  .workflow-shell {
+    grid-template-columns: 1fr;
+  }
+  .workflow-sidebar {
+    position: relative;
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid #d9dee7;
+  }
+  .workflow-dashboard,
+  .workflow-board,
   .workflow-logic-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -88,8 +249,14 @@ body::after {
     width: min(100% - 36px, 1320px);
   }
   .settings-config-list,
-  .workflow-logic-grid {
+  .workflow-logic-grid,
+  .workflow-dashboard,
+  .workflow-board,
+  .workflow-toolbar {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1rem;
+  }
+  .workflow-topbar {
+    display: grid;
   }
 }
