@@ -76,6 +76,19 @@
   color: var(--blue);
   border-color: rgba(31, 111, 235, 0.38);
 }
+.cpsm-footer {
+  padding: 1.25rem 1rem;
+  border-top: 1px solid rgba(176, 184, 196, 0.55);
+  background: #ffffff;
+  text-align: center;
+}
+.cpsm-footer small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+}
 @media (max-width: 760px) {
   .cpsm-maintenance-alert {
     grid-template-columns: 1fr;
