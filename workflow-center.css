@@ -1,0 +1,71 @@
+/* Workflow Center behavior styles */
+.workflow-card-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.workflow-card-controls button {
+  min-height: 32px;
+  padding: 0 0.65rem;
+  border: 1px solid #d9dee7;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  color: var(--text);
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.workflow-card-controls button:hover {
+  border-color: rgba(31, 111, 235, 0.45);
+  color: var(--blue);
+}
+
+.workflow-builder-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.workflow-builder-form label {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.workflow-builder-form input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border: 1px solid #d9dee7;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  color: var(--text);
+}
+
+.workflow-builder-form button {
+  align-self: end;
+  min-height: 44px;
+}
+
+.workflow-column article[hidden] {
+  display: none;
+}
+
+.workflow-column article span {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .workflow-builder-form {
+    grid-template-columns: 1fr;
+  }
+}
