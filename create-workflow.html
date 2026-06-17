@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Create Workflow</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link href="client-portal-overrides.css" rel="stylesheet" />
+  <link href="settings.css" rel="stylesheet" />
+  <link href="workflow-center.css" rel="stylesheet" />
+</head>
+<body class="workflow-dashboard-page">
+  <div class="workflow-shell">
+    <aside class="workflow-sidebar">
+      <div class="workflow-sidebar-brand"><strong>CPSM</strong><span>Workflow Center</span></div>
+      <nav class="workflow-side-nav">
+        <a href="workflow.html">Workflow Dashboard</a>
+        <a class="active" href="create-workflow.html">Create Workflow</a>
+        <a href="workflow-archive.html">Workflow Archive</a>
+        <a href="workflow-settings.html">Workflow Settings</a>
+        <a href="client-portal.html">Back to CPSM</a>
+      </nav>
+    </aside>
+    <main class="workflow-main">
+      <header class="workflow-topbar">
+        <div><p class="tile-kicker">Logic Builder</p><h1>Create Workflow</h1><p>Build a workflow using IF field options and THEN action options. Add more circumstances with the plus button.</p></div>
+        <a class="btn secondary" href="workflow.html">Workflow Dashboard</a>
+      </header>
+      <section class="workflow-builder workflow-rule-builder">
+        <form id="createWorkflowForm">
+          <label>Workflow Name<input name="workflowName" type="text" placeholder="Example: Maintenance Notice Review" required /></label>
+          <label>Workflow Description<textarea name="workflowDescription" rows="3" placeholder="Briefly describe what this workflow is intended to do."></textarea></label>
+          <div class="workflow-condition-list" id="workflowConditionList">
+            <div class="workflow-condition-row">
+              <span>IF</span>
+              <select name="fieldOption" required>
+                <option value="">Select field</option>
+                <option>Client ID</option>
+                <option>Client Name</option>
+                <option>Feedback Topic</option>
+                <option>Project Status</option>
+                <option>Deliverable Status</option>
+                <option>Maintenance Notice</option>
+                <option>Calendar Event</option>
+                <option>Email Received</option>
+              </select>
+              <select name="fieldCondition" required>
+                <option value="">Select condition</option>
+                <option>equals</option>
+                <option>does not equal</option>
+                <option>contains</option>
+                <option>is missing</option>
+                <option>is completed</option>
+                <option>is not completed</option>
+              </select>
+              <input name="fieldValue" type="text" placeholder="Value" />
+              <span>THEN</span>
+              <select name="actionOption" required>
+                <option value="">Select action</option>
+                <option>Show notice</option>
+                <option>Send reminder</option>
+                <option>Create task</option>
+                <option>Route to owner</option>
+                <option>Update status</option>
+                <option>Create calendar reminder</option>
+                <option>Send email</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn secondary" type="button" id="addWorkflowCondition">+ Add condition</button>
+          <button class="btn primary" type="submit">Save Workflow</button>
+        </form>
+        <div class="workflow-save-confirmation" id="workflowSaveConfirmation" hidden></div>
+      </section>
+    </main>
+  </div>
+  <script src="create-workflow.js"></script>
+</body>
+</html>
