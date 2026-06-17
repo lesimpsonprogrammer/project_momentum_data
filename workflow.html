@@ -8,41 +8,49 @@
   <link href="client-portal-overrides.css" rel="stylesheet" />
   <link href="settings.css" rel="stylesheet" />
 </head>
-<body>
-  <header class="site-header client-portfolio-header" id="top">
-    <nav aria-label="Workflow Center navigation" class="nav container">
-      <a class="brand brand-image-only" href="client-portal.html" aria-label="Back to CPSM dashboard">
-        <img src="assets/momentum-data-logo-transparent.svg" alt="Momentum Data logo" class="brand-logo brand-logo-transparent" />
-      </a>
-      <div class="nav-links">
-        <a href="client-portal.html">Dashboard</a>
-        <a href="workflow.html">Workflow Center</a>
-        <a href="configure-client.html">Configure Client</a>
+<body class="workflow-dashboard-page">
+  <div class="workflow-shell">
+    <aside class="workflow-sidebar">
+      <div class="workflow-sidebar-brand"><strong>CPSM</strong><span>Workflow Center</span></div>
+      <nav class="workflow-side-nav">
+        <a class="active" href="#workflowDashboard">Workflow Dashboard</a>
+        <a href="#logicBoard">Logic Board</a>
+        <a href="#workflowBuilder">Create Workflow</a>
+        <a href="#workflowTemplates">Templates</a>
         <a href="settings.html">Settings</a>
-      </div>
-    </nav>
-  </header>
-  <main class="tool-page-main">
-    <div class="container">
-      <section class="settings-page-card workflow-logic-page">
-        <p class="tile-kicker">Logic Template</p>
-        <h1>Workflow Center</h1>
-        <p>Build board-centered work using a clear logic structure: trigger, rules, steps, owner, and outcome.</p>
-        <div class="workflow-logic-grid">
-          <section><span>01</span><h2>Trigger</h2><p>What starts the work?</p><strong>Example: Client submits feedback.</strong></section>
-          <section><span>02</span><h2>Rules</h2><p>What must be true?</p><strong>Example: Feedback topic is Scheduled Maintenance.</strong></section>
-          <section><span>03</span><h2>Steps</h2><p>What happens next?</p><strong>Example: Create review item and assign owner.</strong></section>
-          <section><span>04</span><h2>Owner</h2><p>Who manages the work?</p><strong>Example: Project Manager or Account Access.</strong></section>
-          <section><span>05</span><h2>Outcome</h2><p>How does the work close?</p><strong>Example: Reviewed, resolved, or escalated.</strong></section>
-        </div>
-        <div class="settings-config-list">
-          <section><h2>Maintenance Acknowledgement</h2><p>Logic: when user logs in, if notice is not reviewed, show acknowledgement request.</p></section>
-          <section><h2>Client Feedback Review</h2><p>Logic: when feedback is submitted, route by topic and set review status.</p></section>
-          <section><h2>Deliverable Approval</h2><p>Logic: when a deliverable is ready, send to client review, then approve or revise.</p></section>
-          <section><h2>Client Onboarding</h2><p>Logic: when setup is complete, add the client to the profile directory.</p></section>
-        </div>
+        <a href="client-portal.html">Back to CPSM</a>
+      </nav>
+    </aside>
+    <main class="workflow-main">
+      <header class="workflow-topbar">
+        <div><p class="tile-kicker">Client Portfolio Service Manager</p><h1>Workflow Center</h1><p>Manage active workflow boards, logic templates, routing, and status.</p></div>
+        <a class="btn primary" href="#workflowBuilder">Create Workflow</a>
+      </header>
+      <section class="workflow-dashboard" id="workflowDashboard">
+        <article><span>Active</span><strong>04</strong><p>Running workflows</p></article>
+        <article><span>Review</span><strong>08</strong><p>Waiting for owner review</p></article>
+        <article><span>Complete</span><strong>21</strong><p>Closed this month</p></article>
+        <article><span>Exceptions</span><strong>02</strong><p>Needs follow-up</p></article>
       </section>
-    </div>
-  </main>
+      <section class="workflow-toolbar">
+        <input type="search" placeholder="Search workflows or clients" />
+        <select><option>All statuses</option><option>Active</option><option>Draft</option><option>Review</option><option>Complete</option></select>
+        <button class="btn secondary" type="button">Filter</button>
+      </section>
+      <section class="workflow-board" id="logicBoard">
+        <div class="workflow-column"><h2>Intake</h2><article><strong>Client Onboarding</strong><p>Collect profile, team, and project setup details.</p></article><article><strong>Client Feedback</strong><p>New client feedback submitted through CPSM.</p></article></div>
+        <div class="workflow-column"><h2>Logic Check</h2><article><strong>Maintenance Notice</strong><p>Check whether the notice has been reviewed.</p></article><article><strong>Deliverable Review</strong><p>Check whether a deliverable is ready for client review.</p></article></div>
+        <div class="workflow-column"><h2>In Progress</h2><article><strong>Feedback Routing</strong><p>Route feedback to the correct owner.</p></article></div>
+        <div class="workflow-column"><h2>Complete</h2><article><strong>Directory Update</strong><p>Client record added to the directory.</p></article></div>
+      </section>
+      <section class="workflow-builder" id="workflowBuilder"><p class="tile-kicker">Logic Builder</p><h2>Create Workflow</h2><p>Define each workflow with: trigger, rules, steps, owner, and outcome.</p></section>
+      <section class="settings-config-list" id="workflowTemplates">
+        <section><h2>Maintenance Acknowledgement</h2><p>Show a notice when review is needed.</p></section>
+        <section><h2>Client Feedback Review</h2><p>Route feedback by topic and status.</p></section>
+        <section><h2>Deliverable Approval</h2><p>Move deliverables through review.</p></section>
+        <section><h2>Client Onboarding</h2><p>Add completed clients to the directory.</p></section>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
