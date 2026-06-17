@@ -1,14 +1,12 @@
 /* Main website immersive hero treatment
-   This file overrides the base hero styles from styles.css.
-   It keeps the hero image full-bleed, widens the header/hero working area,
-   reduces image scaling, and adds subtle animated data sparkle.
+   Clean CSS-generated data-flow hero.
+   This removes the annotated image dependency and preserves the widened margins.
 */
 
 body {
   overflow-x: hidden;
 }
 
-/* Widen the header content so the logo and nav do not feel boxed in. */
 .site-header .nav.container {
   width: min(1440px, calc(100% - 48px)) !important;
 }
@@ -24,13 +22,13 @@ body {
   background:
     linear-gradient(90deg,
       rgba(5, 14, 35, 0.98) 0%,
-      rgba(7, 20, 48, 0.88) 24%,
-      rgba(7, 20, 48, 0.40) 50%,
-      rgba(7, 20, 48, 0.10) 74%,
-      rgba(7, 20, 48, 0.42) 100%
+      rgba(6, 18, 42, 0.94) 24%,
+      rgba(8, 28, 66, 0.76) 48%,
+      rgba(11, 38, 82, 0.86) 72%,
+      rgba(5, 14, 35, 0.98) 100%
     ),
-    radial-gradient(circle at 73% 34%, rgba(31, 111, 235, 0.42), transparent 34%),
-    radial-gradient(circle at 82% 30%, rgba(196, 90, 18, 0.38), transparent 30%),
+    radial-gradient(circle at 72% 30%, rgba(31, 111, 235, 0.48), transparent 34%),
+    radial-gradient(circle at 82% 36%, rgba(196, 90, 18, 0.42), transparent 32%),
     #061329 !important;
   border-bottom-color: rgba(234, 244, 255, 0.12) !important;
 }
@@ -38,16 +36,29 @@ body {
 .hero::before {
   content: "";
   position: absolute;
-  inset: -2px;
+  inset: -10%;
   z-index: -3;
-  background-image: url("assets/city%20of%20lights.png");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  /* Reduced scale so the image is not enlarged as much and appears less pixelated. */
-  transform: scale(1.012);
-  filter: saturate(1.18) contrast(1.08) brightness(1.04);
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 28% 42%, rgba(31, 111, 235, 0.30) 0 2px, transparent 3px),
+    radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.32) 0 1.4px, transparent 2.6px),
+    radial-gradient(circle at 52% 52%, rgba(255, 132, 39, 0.36) 0 2px, transparent 3px),
+    radial-gradient(circle at 62% 38%, rgba(0, 210, 255, 0.38) 0 1.8px, transparent 3px),
+    radial-gradient(circle at 75% 60%, rgba(255, 255, 255, 0.28) 0 1.3px, transparent 2.6px),
+    radial-gradient(circle at 88% 28%, rgba(255, 132, 39, 0.34) 0 2px, transparent 3px),
+    linear-gradient(112deg, transparent 0%, rgba(0, 194, 255, 0.08) 26%, rgba(255, 132, 39, 0.15) 46%, rgba(0, 194, 255, 0.10) 62%, transparent 84%);
+  background-size:
+    380px 260px,
+    420px 300px,
+    460px 320px,
+    390px 280px,
+    430px 310px,
+    470px 330px,
+    220% 220%;
+  background-position: 0 0, 80px 30px, 130px 90px, 210px 60px, 290px 120px, 340px 40px, 0% 50%;
+  opacity: 0.98;
+  filter: saturate(1.16) contrast(1.04);
+  animation: cleanDataField 16s linear infinite;
 }
 
 .hero::after {
@@ -59,15 +70,16 @@ body {
   background:
     linear-gradient(90deg,
       rgba(4, 13, 32, 0.98) 0%,
-      rgba(4, 13, 32, 0.90) 13%,
-      rgba(4, 13, 32, 0.66) 29%,
-      rgba(4, 13, 32, 0.24) 52%,
-      rgba(4, 13, 32, 0.08) 72%,
-      rgba(4, 13, 32, 0.38) 100%
+      rgba(4, 13, 32, 0.88) 15%,
+      rgba(4, 13, 32, 0.58) 34%,
+      rgba(4, 13, 32, 0.22) 58%,
+      rgba(4, 13, 32, 0.44) 100%
     ),
-    radial-gradient(ellipse at 73% 39%, rgba(0, 210, 255, 0.27), transparent 31%),
-    radial-gradient(ellipse at 77% 35%, rgba(255, 138, 39, 0.23), transparent 28%),
-    linear-gradient(180deg, rgba(6, 19, 41, 0.05) 0%, rgba(6, 19, 41, 0.82) 100%);
+    repeating-linear-gradient(26deg, transparent 0 38px, rgba(88, 211, 255, 0.055) 39px, transparent 41px),
+    repeating-linear-gradient(-18deg, transparent 0 52px, rgba(255, 144, 54, 0.045) 53px, transparent 55px),
+    radial-gradient(ellipse at 73% 39%, rgba(0, 210, 255, 0.32), transparent 32%),
+    radial-gradient(ellipse at 77% 35%, rgba(255, 138, 39, 0.27), transparent 30%),
+    linear-gradient(180deg, rgba(6, 19, 41, 0.05) 0%, rgba(6, 19, 41, 0.86) 100%);
 }
 
 .hero .hero-grid {
@@ -288,6 +300,16 @@ body {
   animation-delay: 2s;
 }
 
+@keyframes cleanDataField {
+  0% {
+    background-position: 0 0, 80px 30px, 130px 90px, 210px 60px, 290px 120px, 340px 40px, 0% 50%;
+  }
+
+  100% {
+    background-position: 380px 0, 500px 30px, 590px 90px, 600px 60px, 720px 120px, 810px 40px, 100% 50%;
+  }
+}
+
 @keyframes dataFlow {
   0% {
     background-position: 0% 50%;
@@ -324,7 +346,7 @@ body {
   }
 
   50% {
-    transform: translate3d(12px, -8px, 0) scale(1.04);
+    transform: translate3d(10px, -8px, 0) scale(1.04);
     opacity: 0.80;
   }
 }
@@ -355,11 +377,6 @@ body {
   .hero .hero-grid {
     min-height: auto !important;
     grid-template-columns: 1fr !important;
-  }
-
-  .hero::before {
-    background-position: center right;
-    opacity: 0.72;
   }
 
   .hero::after {
@@ -398,6 +415,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero::before,
   .hero .hero-grid::after,
   .hero-visual-energy::before,
   .hero-visual-energy::after,
