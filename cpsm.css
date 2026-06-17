@@ -5,6 +5,10 @@
 .client-portfolio-header .nav.container {
   width: min(1320px, calc(100% - 72px));
 }
+.client-portfolio-header .nav-links a[href="index.html#process"],
+.client-portfolio-header .nav-links a[href="index.html#about"] {
+  display: none !important;
+}
 .cpsm-maintenance-alert {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
