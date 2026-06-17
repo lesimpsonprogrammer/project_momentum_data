@@ -31,6 +31,10 @@
 }
 .client-portfolio-header .nav-links {
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  font-weight: 500;
+  font-size: 0.82rem;
 }
 .client-portfolio-header .nav-links a[href="index.html#services"],
 .client-portfolio-header .nav-links a[href="index.html#process"],
