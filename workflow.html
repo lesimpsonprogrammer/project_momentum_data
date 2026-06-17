@@ -9,16 +9,37 @@
   <link href="settings.css" rel="stylesheet" />
 </head>
 <body>
+  <header class="site-header client-portfolio-header" id="top">
+    <nav aria-label="Workflow Center navigation" class="nav container">
+      <a class="brand brand-image-only" href="client-portal.html" aria-label="Back to CPSM dashboard">
+        <img src="assets/momentum-data-logo-transparent.svg" alt="Momentum Data logo" class="brand-logo brand-logo-transparent" />
+      </a>
+      <div class="nav-links">
+        <a href="client-portal.html">Dashboard</a>
+        <a href="workflow.html">Workflow Center</a>
+        <a href="configure-client.html">Configure Client</a>
+        <a href="settings.html">Settings</a>
+      </div>
+    </nav>
+  </header>
   <main class="tool-page-main">
     <div class="container">
-      <section class="settings-page-card">
+      <section class="settings-page-card workflow-logic-page">
+        <p class="tile-kicker">Logic Template</p>
         <h1>Workflow Center</h1>
-        <p>Create and manage board-centered workflows.</p>
+        <p>Build board-centered work using a clear logic structure: trigger, rules, steps, owner, and outcome.</p>
+        <div class="workflow-logic-grid">
+          <section><span>01</span><h2>Trigger</h2><p>What starts the work?</p><strong>Example: Client submits feedback.</strong></section>
+          <section><span>02</span><h2>Rules</h2><p>What must be true?</p><strong>Example: Feedback topic is Scheduled Maintenance.</strong></section>
+          <section><span>03</span><h2>Steps</h2><p>What happens next?</p><strong>Example: Create review item and assign owner.</strong></section>
+          <section><span>04</span><h2>Owner</h2><p>Who manages the work?</p><strong>Example: Project Manager or Account Access.</strong></section>
+          <section><span>05</span><h2>Outcome</h2><p>How does the work close?</p><strong>Example: Reviewed, resolved, or escalated.</strong></section>
+        </div>
         <div class="settings-config-list">
-          <section><h2>Maintenance Acknowledgement</h2><p>Track notice review status.</p></section>
-          <section><h2>Client Feedback Review</h2><p>Route feedback and monitor open items.</p></section>
-          <section><h2>Deliverable Approval</h2><p>Move work through review steps.</p></section>
-          <section><h2>Client Onboarding</h2><p>Move a new client into the active directory.</p></section>
+          <section><h2>Maintenance Acknowledgement</h2><p>Logic: when user logs in, if notice is not reviewed, show acknowledgement request.</p></section>
+          <section><h2>Client Feedback Review</h2><p>Logic: when feedback is submitted, route by topic and set review status.</p></section>
+          <section><h2>Deliverable Approval</h2><p>Logic: when a deliverable is ready, send to client review, then approve or revise.</p></section>
+          <section><h2>Client Onboarding</h2><p>Logic: when setup is complete, add the client to the profile directory.</p></section>
         </div>
       </section>
     </div>
