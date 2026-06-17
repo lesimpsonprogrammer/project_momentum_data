@@ -1,13 +1,46 @@
 /* CPSM styles */
+.cpsm-top-banner {
+  position: relative;
+  z-index: 30;
+  background: #0b1f3a;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+.cpsm-top-banner .container {
+  width: min(1320px, calc(100% - 72px));
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+}
+.cpsm-top-banner span {
+  font-weight: 800;
+}
+.cpsm-top-banner strong {
+  font-weight: 500;
+  opacity: 0.78;
+}
 .client-portal-dashboard .container {
   width: min(1320px, calc(100% - 72px));
 }
 .client-portfolio-header .nav.container {
   width: min(1320px, calc(100% - 72px));
 }
+.client-portfolio-header .nav-links {
+  justify-content: center;
+}
+.client-portfolio-header .nav-links a[href="index.html#services"],
 .client-portfolio-header .nav-links a[href="index.html#process"],
 .client-portfolio-header .nav-links a[href="index.html#about"] {
   display: none !important;
+}
+.client-portfolio-header .nav-links a.is-active {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 0.32rem;
 }
 .cpsm-maintenance-alert {
   display: grid;
@@ -101,8 +134,16 @@
 }
 @media (max-width: 760px) {
   .client-portal-dashboard .container,
-  .client-portfolio-header .nav.container {
+  .client-portfolio-header .nav.container,
+  .cpsm-top-banner .container {
     width: min(100% - 36px, 1320px);
+  }
+  .cpsm-top-banner .container {
+    min-height: 42px;
+    display: grid;
+    justify-content: stretch;
+    gap: 0.1rem;
+    padding: 0.45rem 0;
   }
   .cpsm-maintenance-alert {
     grid-template-columns: 1fr;
