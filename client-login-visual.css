@@ -35,3 +35,20 @@
   text-align: center !important;
   line-height: 1.5;
 }
+
+.login-page::after {
+  content: "Client Portfolio Service Manager, a Momentum Data Solutions Software Company.";
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  text-align: center;
+  border-top: 1px solid rgba(176, 184, 196, 0.55);
+}
