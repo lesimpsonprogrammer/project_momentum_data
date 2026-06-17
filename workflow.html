@@ -14,42 +14,33 @@
     <aside class="workflow-sidebar">
       <div class="workflow-sidebar-brand"><strong>CPSM</strong><span>Workflow Center</span></div>
       <nav class="workflow-side-nav">
-        <a class="active" href="#workflowDashboard">Workflow Dashboard</a>
-        <a href="#logicBoard">Logic Board</a>
-        <a href="#workflowBuilder">Create Workflow</a>
-        <a href="#workflowTemplates">Templates</a>
-        <a href="settings.html">Settings</a>
+        <a class="active" href="workflow.html">Workflow Dashboard</a>
+        <a href="create-workflow.html">Create Workflow</a>
+        <a href="workflow-archive.html">Workflow Archive</a>
+        <a href="workflow-settings.html">Workflow Settings</a>
         <a href="client-portal.html">Back to CPSM</a>
       </nav>
     </aside>
     <main class="workflow-main">
       <header class="workflow-topbar">
-        <div><p class="tile-kicker">Client Portfolio Service Manager</p><h1>Workflow Center</h1><p>Manage active workflow boards, logic templates, routing, and status.</p></div>
-        <a class="btn primary" href="#workflowBuilder">Create Workflow</a>
+        <div><p class="tile-kicker">Client Portfolio Service Manager</p><h1>Workflow Dashboard</h1><p>View current and active workflows. Inactive workflows are stored in Workflow Archive.</p></div>
+        <a class="btn primary" href="create-workflow.html">Create Workflow</a>
       </header>
       <section class="workflow-dashboard" id="workflowDashboard">
-        <article><span>Active</span><strong>04</strong><p>Running workflows</p></article>
-        <article><span>Review</span><strong>08</strong><p>Waiting for owner review</p></article>
-        <article><span>Complete</span><strong>21</strong><p>Closed this month</p></article>
-        <article><span>Exceptions</span><strong>02</strong><p>Needs follow-up</p></article>
+        <article><span>Active</span><strong id="activeWorkflowCount">00</strong><p>Current workflows</p></article>
+        <article><span>Conditions</span><strong id="conditionCount">00</strong><p>Total logic rules</p></article>
+        <article><span>Archived</span><strong id="archivedWorkflowCount">00</strong><p>Inactive workflows</p></article>
+        <article><span>Exceptions</span><strong id="exceptionWorkflowCount">00</strong><p>Needs follow-up</p></article>
       </section>
       <section class="workflow-toolbar">
-        <input type="search" placeholder="Search workflows or clients" />
-        <select><option>All statuses</option><option>Intake</option><option>Logic Check</option><option>In Progress</option><option>Complete</option></select>
-        <button class="btn secondary" type="button">Filter</button>
+        <input id="workflowSearch" type="search" placeholder="Search active workflows" />
+        <select id="workflowStatusFilter"><option>All active workflows</option><option>Active</option></select>
+        <button class="btn secondary" type="button" id="workflowFilterButton">Filter</button>
       </section>
-      <section class="workflow-board" id="logicBoard">
-        <div class="workflow-column"><h2>Intake</h2><article><strong>Client Onboarding</strong><p>Collect profile, team, and project setup details.</p></article><article><strong>Client Feedback</strong><p>New client feedback submitted through CPSM.</p></article></div>
-        <div class="workflow-column"><h2>Logic Check</h2><article><strong>Maintenance Notice</strong><p>Check whether the notice has been reviewed.</p></article><article><strong>Deliverable Review</strong><p>Check whether a deliverable is ready for client review.</p></article></div>
-        <div class="workflow-column"><h2>In Progress</h2><article><strong>Feedback Routing</strong><p>Route feedback to the correct owner.</p></article></div>
-        <div class="workflow-column"><h2>Complete</h2><article><strong>Directory Update</strong><p>Client record added to the directory.</p></article></div>
-      </section>
-      <section class="workflow-builder" id="workflowBuilder"><p class="tile-kicker">Logic Builder</p><h2>Create Workflow</h2><p>Define each workflow with: trigger, rules, steps, owner, and outcome.</p></section>
-      <section class="settings-config-list" id="workflowTemplates">
-        <section><h2>Maintenance Acknowledgement</h2><p>Show a notice when review is needed.</p></section>
-        <section><h2>Client Feedback Review</h2><p>Route feedback by topic and status.</p></section>
-        <section><h2>Deliverable Approval</h2><p>Move deliverables through review.</p></section>
-        <section><h2>Client Onboarding</h2><p>Add completed clients to the directory.</p></section>
+      <section class="workflow-list-panel" aria-labelledby="activeWorkflowsTitle">
+        <div class="workflow-section-heading"><p class="tile-kicker">Workflow Center</p><h2 id="activeWorkflowsTitle">Current & Active Workflows</h2></div>
+        <div class="workflow-empty-state" id="workflowEmptyState">No active workflows have been saved yet. Select Create Workflow to build one.</div>
+        <div class="workflow-saved-list" id="activeWorkflowList"></div>
       </section>
     </main>
   </div>
