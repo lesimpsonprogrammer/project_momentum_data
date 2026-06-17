@@ -6,9 +6,18 @@
   const feedbackConfirmation = document.querySelector('#cpsmFeedbackConfirmation');
   const noticeKey = 'cpsmNoticeConfirmedBefore20260724';
 
+  if (!document.querySelector('.cpsm-footer')) {
+    const footer = document.createElement('footer');
+    const small = document.createElement('small');
+    footer.className = 'cpsm-footer';
+    small.textContent = 'Client Portfolio Service Manager, a Momentum Data Solutions Software Company.';
+    footer.appendChild(small);
+    document.body.appendChild(footer);
+  }
+
   const portalNav = document.querySelector('.portal-panel-nav');
   function addPortalLink(href, label, action) {
-    if (!portalNav || portalNav.querySelector(`a[href="${href}"]`)) return;
+    if (!portalNav || portalNav.querySelector('a[href="' + href + '"]')) return;
     const link = document.createElement('a');
     const labelNode = document.createElement('strong');
     const actionNode = document.createElement('span');
