@@ -1,5 +1,9 @@
 /* Client Portfolio greeting alignment */
 .client-portal-main .portal-heading-bar {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 2.25rem;
+  justify-content: space-between;
   text-align: left;
 }
 
@@ -7,8 +11,17 @@
   text-align: left;
 }
 
+.client-portal-main .portal-heading-bar .portal-google-search {
+  justify-content: flex-end;
+}
+
 @media (max-width: 1080px) {
   .client-portal-main .portal-heading-bar {
     align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .client-portal-main .portal-heading-bar .portal-google-search {
+    justify-content: flex-start;
   }
 }
