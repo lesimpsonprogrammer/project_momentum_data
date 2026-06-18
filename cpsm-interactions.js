@@ -60,7 +60,7 @@
   if (!document.querySelector('.cpsm-top-banner')) {
     const banner = document.createElement('div');
     banner.className = 'cpsm-top-banner';
-    banner.innerHTML = '<div class="container"><span>Client Portfolio Service Manager</span><strong>Momentum Data Solutions Software Company</strong></div>';
+    banner.innerHTML = '<div class="container"><span>Client Portfolio Service Manager, A Momentum Data Solutions Software Company</span></div>';
     const header = document.querySelector('.client-portfolio-header');
     if (header) header.before(banner);
   }
