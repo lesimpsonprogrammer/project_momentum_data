@@ -23,10 +23,8 @@
     header.className = 'site-header client-portfolio-header cpsm-global-header';
     header.id = 'top';
     header.innerHTML = `
-      <nav aria-label="CPSM navigation" class="nav container">
-        <a class="brand brand-image-only" href="client-portal.html" aria-label="CPSM dashboard">
-          <img src="assets/momentum-data-logo-transparent.svg" alt="Momentum Data logo" class="brand-logo brand-logo-transparent" />
-        </a>
+      <nav aria-label="CPSM navigation" class="nav container cpsm-nav-no-logo">
+        <div class="cpsm-nav-spacer" aria-hidden="true"></div>
         <div class="nav-links"></div>
       </nav>
     `;
