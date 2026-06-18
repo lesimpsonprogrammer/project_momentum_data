@@ -29,6 +29,12 @@
 .client-portfolio-header .nav.container {
   width: min(1320px, calc(100% - 72px));
 }
+.client-portfolio-header .brand,
+.client-portfolio-header .brand-image-only,
+.client-portfolio-header .brand-text-logo,
+.client-portfolio-header .brand-logo {
+  display: none !important;
+}
 .client-portfolio-header .nav-links {
   justify-content: center;
   flex-wrap: wrap;
