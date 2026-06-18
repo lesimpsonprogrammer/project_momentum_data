@@ -8,6 +8,7 @@
 
   const navItems = [
     ['client-portal.html', 'Dashboard'],
+    ['scope.html', 'Scope'],
     ['workflow.html', 'Workflow Center'],
     ['project-management.html', 'Project Management'],
     ['financial-management.html', 'Financial Management'],
@@ -22,6 +23,7 @@
       label: 'Workspace',
       links: [
         ['client-portal.html#dashboard', 'Dashboard', 'Project overview'],
+        ['scope.html', 'Scope', 'Filter client view'],
         ['client-portal.html#clientFeedback', 'Client Feedback', 'Submit notes'],
       ],
     },
