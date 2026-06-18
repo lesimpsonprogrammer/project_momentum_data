@@ -10,6 +10,23 @@
     ['configure-client.html', 'Configure Client'],
   ];
 
+  function injectNavLinkColorStyle() {
+    if (document.querySelector('#cpsmNavLinkColorStyle')) return;
+    const style = document.createElement('style');
+    style.id = 'cpsmNavLinkColorStyle';
+    style.textContent = `
+      .client-portfolio-header .nav-links a {
+        color: #0b1f3a !important;
+      }
+      .client-portfolio-header .nav-links a:hover,
+      .client-portfolio-header .nav-links a.is-active {
+        color: #0b1f3a !important;
+        text-decoration-color: #0b1f3a;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   function createBanner() {
     if (document.querySelector('.cpsm-top-banner')) return null;
     const banner = document.createElement('div');
@@ -42,6 +59,8 @@
       container.appendChild(link);
     });
   }
+
+  injectNavLinkColorStyle();
 
   let header = document.querySelector('.client-portfolio-header');
   const banner = createBanner();
