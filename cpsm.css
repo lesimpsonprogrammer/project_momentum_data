@@ -192,6 +192,103 @@
   color: var(--blue) !important;
   font-weight: 600;
 }
+.utility-form {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+.utility-form label {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.utility-form input,
+.utility-form select {
+  min-height: 42px;
+  padding: 0 0.8rem;
+  border: 1px solid #d9dee7;
+  border-radius: 0.72rem;
+  background: #ffffff;
+}
+.utility-confirmation {
+  margin: 0;
+  padding: 0.8rem;
+  border: 1px solid rgba(23, 135, 84, 0.35);
+  border-radius: 0.75rem;
+  background: rgba(230, 250, 239, 0.98);
+  color: #12633d;
+  font-size: 0.86rem;
+}
+.utility-status-list {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.utility-status-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #e2e7ef;
+  border-radius: 0.75rem;
+  background: #fbfcff;
+}
+.directory-results-panel {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid #d9dee7;
+  border-radius: 1rem;
+  background: #ffffff;
+}
+.directory-results-heading h2 {
+  margin: 0.15rem 0 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+.directory-result-header,
+.directory-result-row {
+  display: grid;
+  grid-template-columns: 150px minmax(180px, 1fr) 130px minmax(150px, 1fr) 110px;
+  gap: 0.8rem;
+  align-items: center;
+}
+.directory-result-header {
+  padding: 0.7rem 0.85rem;
+  color: #6b7280;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.directory-result-list {
+  display: grid;
+  gap: 0.45rem;
+}
+.directory-result-row {
+  padding: 0.8rem 0.85rem;
+  border: 1px solid #e2e7ef;
+  border-radius: 0.75rem;
+  background: #fbfcff;
+  color: var(--text);
+  font-size: 0.88rem;
+}
+.directory-result-row a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+.directory-result-row a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+.directory-empty-state {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
 .portal-panel-nav {
   display: grid;
   gap: 0.85rem;
@@ -236,6 +333,12 @@
     min-height: auto;
     border-right: 0;
     border-bottom: 1px solid #d9dee7;
+  }
+  .directory-result-header {
+    display: none;
+  }
+  .directory-result-row {
+    grid-template-columns: 1fr;
   }
 }
 @media (max-width: 760px) {
