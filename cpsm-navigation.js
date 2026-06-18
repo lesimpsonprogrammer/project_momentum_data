@@ -4,6 +4,7 @@
     ['workflow.html', 'Workflow Center'],
     ['project-management.html', 'Project Management'],
     ['financial-management.html', 'Financial Management'],
+    ['utilities.html', 'Utilities'],
     ['client-profile-directory.html', 'Client Directory'],
     ['settings.html', 'Settings & Configuration'],
     ['configure-client.html', 'Configure Client'],
