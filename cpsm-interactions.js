@@ -16,6 +16,45 @@
     ['configure-client.html', 'Configure Client'],
   ];
 
+  const portalMenuGroups = [
+    {
+      label: 'Workspace',
+      links: [
+        ['client-portal.html#dashboard', 'Dashboard', 'Project overview'],
+        ['client-portal.html#clientFeedback', 'Client Feedback', 'Submit notes'],
+      ],
+    },
+    {
+      label: 'Management',
+      links: [
+        ['workflow.html', 'Workflow Center', 'Automation'],
+        ['project-management.html', 'Project Management', 'Milestones'],
+        ['financial-management.html', 'Financial Management', 'Invoices'],
+        ['client-profile-directory.html', 'Client Directory', 'Records'],
+      ],
+    },
+    {
+      label: 'Configuration',
+      links: [
+        ['settings.html', 'Settings & Configuration', 'System setup'],
+        ['configure-client.html', 'Configure Client', 'Client setup'],
+      ],
+    },
+    {
+      label: 'Tools',
+      links: [
+        ['calculator.html', 'Calculator', 'Open tool'],
+        ['project-estimator.html', 'Project Estimator', 'Estimate scope'],
+      ],
+    },
+    {
+      label: 'Account',
+      links: [
+        ['login.html', 'Client Log-in', 'Switch user'],
+      ],
+    },
+  ];
+
   if (!document.querySelector('.cpsm-top-banner')) {
     const banner = document.createElement('div');
     banner.className = 'cpsm-top-banner';
@@ -44,24 +83,45 @@
     const shell = document.createElement('div');
     const sideNav = document.createElement('aside');
     const brand = document.createElement('div');
-    const nav = document.createElement('nav');
 
     shell.className = 'cpsm-portal-shell';
     sideNav.className = 'workflow-sidebar cpsm-portal-side-nav';
-    brand.className = 'workflow-sidebar-brand';
-    nav.className = 'workflow-side-nav cpsm-portal-side-menu';
+    brand.className = 'workflow-sidebar-brand cpsm-portal-brand';
     brand.innerHTML = '<strong>CPSM</strong><span>Portal Menu</span>';
 
-    navItems.forEach(([href, label]) => {
-      const link = document.createElement('a');
-      link.href = href;
-      link.textContent = label;
-      if (window.location.pathname.endsWith(href)) link.classList.add('active');
-      nav.appendChild(link);
+    sideNav.appendChild(brand);
+
+    portalMenuGroups.forEach((group) => {
+      const section = document.createElement('section');
+      const heading = document.createElement('h3');
+      const nav = document.createElement('nav');
+
+      section.className = 'cpsm-side-menu-section';
+      heading.textContent = group.label;
+      nav.className = 'workflow-side-nav cpsm-portal-side-menu';
+      nav.setAttribute('aria-label', group.label);
+
+      group.links.forEach(([href, label, note]) => {
+        const link = document.createElement('a');
+        const labelNode = document.createElement('span');
+        const noteNode = document.createElement('small');
+
+        link.href = href;
+        labelNode.textContent = label;
+        noteNode.textContent = note;
+        link.appendChild(labelNode);
+        link.appendChild(noteNode);
+
+        const pagePath = href.split('#')[0];
+        if (pagePath && window.location.pathname.endsWith(pagePath)) link.classList.add('active');
+        nav.appendChild(link);
+      });
+
+      section.appendChild(heading);
+      section.appendChild(nav);
+      sideNav.appendChild(section);
     });
 
-    sideNav.appendChild(brand);
-    sideNav.appendChild(nav);
     header.after(shell);
     shell.appendChild(sideNav);
     shell.appendChild(main);
@@ -78,27 +138,6 @@
     footer.appendChild(small);
     document.body.appendChild(footer);
   }
-
-  const portalNav = document.querySelector('.portal-panel-nav');
-  function addPortalLink(href, label, action) {
-    if (!portalNav || portalNav.querySelector('a[href="' + href + '"]')) return;
-    const link = document.createElement('a');
-    const labelNode = document.createElement('strong');
-    const actionNode = document.createElement('span');
-    link.href = href;
-    labelNode.textContent = label;
-    actionNode.textContent = action;
-    link.appendChild(labelNode);
-    link.appendChild(actionNode);
-    portalNav.appendChild(link);
-  }
-
-  addPortalLink('workflow.html', 'Workflow Center', 'Open');
-  addPortalLink('project-management.html', 'Project Management', 'Open');
-  addPortalLink('financial-management.html', 'Financial Management', 'Open');
-  addPortalLink('client-profile-directory.html', 'Client Profile Directory', 'Open');
-  addPortalLink('settings.html', 'Settings & Configuration', 'Open');
-  addPortalLink('configure-client.html', 'Configure Client', 'Open');
 
   if (notice && confirmButton) {
     const alreadyConfirmed = localStorage.getItem(noticeKey) === 'true';
