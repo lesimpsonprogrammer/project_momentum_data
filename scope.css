@@ -1,0 +1,42 @@
+.scope-page-card .directory-results-panel {
+  margin-top: 1.25rem;
+}
+.scope-active-card {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid #d9dee7;
+  border-radius: 1rem;
+  background: #ffffff;
+}
+.scope-active-card h2 {
+  margin: 0.15rem 0 0.6rem;
+  color: #0b1f3a;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.scope-active-card p {
+  color: var(--muted);
+}
+.scope-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.scope-select-button {
+  width: fit-content;
+  padding: 0.48rem 0.7rem;
+  border: 1px solid #d9dee7;
+  border-radius: 0.65rem;
+  background: #ffffff;
+  color: #0b1f3a;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.scope-select-button:hover {
+  background: #f7f8fb;
+  border-color: #0b1f3a;
+}
