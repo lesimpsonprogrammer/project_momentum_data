@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Scope | CPSM</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link href="client-portal-overrides.css" rel="stylesheet" />
+  <link href="cpsm.css" rel="stylesheet" />
+  <link href="settings.css" rel="stylesheet" />
+</head>
+<body>
+  <main class="tool-page-main">
+    <div class="container">
+      <section class="settings-page-card scope-page-card">
+        <p class="tile-kicker">Client Portfolio Service Manager</p>
+        <h1>Scope</h1>
+        <p>Scope is a business process that filters CPSM views to a selected client. Search and select a client to set the active client scope.</p>
+        <form class="portal-google-search client-directory-search" id="scopeSearchForm" role="search">
+          <label class="sr-only" for="scopeSearch">Search client scope</label>
+          <input id="scopeSearch" name="scopeSearch" type="search" placeholder="Search Client ID or Client Name" />
+          <button class="btn primary" type="submit">Search</button>
+          <a href="client-profile-directory.html">Open Client Directory</a>
+        </form>
+        <section class="directory-results-panel directory-results-top" aria-labelledby="scopeResultsTitle">
+          <div class="directory-results-heading">
+            <p class="tile-kicker">Client Scope Results</p>
+            <h2 id="scopeResultsTitle">Select Client Scope</h2>
+          </div>
+          <div class="directory-result-header scope-result-header" aria-hidden="true">
+            <span>Client ID</span>
+            <span>Client Name</span>
+            <span>Status</span>
+            <span>Team</span>
+            <span>Scope</span>
+          </div>
+          <div class="directory-result-list" id="scopeResults"></div>
+          <p class="directory-empty-state" id="scopeEmptyState">Select a Client ID or Set Scope to apply a client-specific viewing filter.</p>
+        </section>
+        <section class="scope-active-card" aria-live="polite">
+          <p class="tile-kicker">Active Scope</p>
+          <h2 id="activeScopeTitle">No client scope selected</h2>
+          <p id="activeScopeDescription">Once a client is selected, CPSM will use that client as the active viewing scope for this browser session.</p>
+          <div class="scope-action-row">
+            <a class="btn secondary" id="activeScopeDashboard" href="client-portal.html">Open Dashboard</a>
+            <button class="btn secondary" id="clearScopeButton" type="button">Clear Scope</button>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+  <script src="cpsm-navigation.js"></script>
+  <script src="scope.js"></script>
+</body>
+</html>
