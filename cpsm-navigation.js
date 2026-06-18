@@ -1,6 +1,7 @@
 (() => {
   const navItems = [
     ['client-portal.html', 'Dashboard'],
+    ['scope.html', 'Scope'],
     ['workflow.html', 'Workflow Center'],
     ['project-management.html', 'Project Management'],
     ['financial-management.html', 'Financial Management'],
