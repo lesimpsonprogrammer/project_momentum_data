@@ -6,15 +6,17 @@
   <title>Client Profile Directory</title>
   <link href="styles.css" rel="stylesheet" />
   <link href="client-portal-overrides.css" rel="stylesheet" />
+  <link href="cpsm.css" rel="stylesheet" />
   <link href="settings.css" rel="stylesheet" />
 </head>
 <body>
   <main class="tool-page-main">
     <div class="container">
       <section class="settings-page-card">
+        <p class="tile-kicker">Client Portfolio Service Manager</p>
         <h1>Client Profile Directory</h1>
-        <p>Search onboarded clients by Client ID, client name, or team assignment.</p>
-        <form class="portal-google-search" role="search">
+        <p>Search onboarded clients by Client ID, client name, status, or team assignment.</p>
+        <form class="portal-google-search client-directory-search" id="clientDirectorySearchForm" role="search">
           <label class="sr-only" for="clientDirectorySearch">Search clients</label>
           <input id="clientDirectorySearch" name="clientDirectorySearch" type="search" placeholder="Search Client ID or Client Name" />
           <button class="btn primary" type="submit">Search</button>
@@ -24,10 +26,26 @@
           <section><h2>Advanced Search</h2><p>Use Client ID, client name, team, or status to narrow directory records.</p></section>
           <section><h2>Teams</h2><p>Group client contacts, authorized representatives, and project stakeholders.</p></section>
           <section><h2>Client Records</h2><p>Review client status, onboarding status, and active project assignments.</p></section>
-          <section><h2>Directory Results</h2><p>Results will show matching clients after the data source is connected.</p></section>
         </div>
+        <section class="directory-results-panel" aria-labelledby="directoryResultsTitle">
+          <div class="directory-results-heading">
+            <p class="tile-kicker">Directory Results</p>
+            <h2 id="directoryResultsTitle">Search Results</h2>
+          </div>
+          <div class="directory-result-header" aria-hidden="true">
+            <span>Client ID</span>
+            <span>Client Name</span>
+            <span>Status</span>
+            <span>Team</span>
+            <span>Dashboard</span>
+          </div>
+          <div class="directory-result-list" id="clientDirectoryResults"></div>
+          <p class="directory-empty-state" id="clientDirectoryEmpty">Search results will appear here as single-line entries. Select a Client ID to open the client dashboard.</p>
+        </section>
       </section>
     </div>
   </main>
+  <script src="cpsm-navigation.js"></script>
+  <script src="client-profile-directory.js"></script>
 </body>
 </html>
