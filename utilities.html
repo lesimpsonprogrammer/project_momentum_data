@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Utilities | CPSM</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link href="client-portal-overrides.css" rel="stylesheet" />
+  <link href="cpsm.css" rel="stylesheet" />
+  <link href="settings.css" rel="stylesheet" />
+</head>
+<body>
+  <main class="tool-page-main">
+    <div class="container">
+      <section class="settings-page-card utilities-page-card">
+        <p class="tile-kicker">Client Portfolio Service Manager</p>
+        <h1>Utilities</h1>
+        <p>Import and export client, project, workflow, deliverable, and financial data for CPSM administration.</p>
+        <div class="settings-config-list utilities-grid">
+          <section>
+            <h2>Data Import</h2>
+            <p>Upload CSV, XLSX, or JSON files and prepare them for client records, project tasks, deliverables, workflow rules, or invoice records.</p>
+            <form class="utility-form" id="dataImportForm">
+              <label>Import type
+                <select name="importType" required>
+                  <option value="">Select import type</option>
+                  <option>Client records</option>
+                  <option>Project tasks</option>
+                  <option>Deliverables</option>
+                  <option>Workflow rules</option>
+                  <option>Financial records</option>
+                </select>
+              </label>
+              <label>Source file
+                <input name="importFile" type="file" accept=".csv,.xlsx,.json" required />
+              </label>
+              <label>Import action
+                <select name="importAction" required>
+                  <option>Validate only</option>
+                  <option>Prepare import package</option>
+                  <option>Stage for review</option>
+                </select>
+              </label>
+              <button class="btn primary" type="submit">Validate Import</button>
+              <p class="utility-confirmation" id="importConfirmation" hidden></p>
+            </form>
+          </section>
+          <section>
+            <h2>Data Export</h2>
+            <p>Generate export-ready files for reporting, backup, reconciliation, or client review.</p>
+            <form class="utility-form" id="dataExportForm">
+              <label>Export data set
+                <select name="exportType" required>
+                  <option value="">Select export data</option>
+                  <option>Client records</option>
+                  <option>Project dashboard</option>
+                  <option>Deliverables</option>
+                  <option>Workflow dashboard</option>
+                  <option>Financial records</option>
+                </select>
+              </label>
+              <label>Export format
+                <select name="exportFormat" required>
+                  <option>CSV</option>
+                  <option>JSON</option>
+                  <option>XLSX-ready CSV</option>
+                </select>
+              </label>
+              <label>Export scope
+                <select name="exportScope" required>
+                  <option>Current active records</option>
+                  <option>Archived records</option>
+                  <option>All records</option>
+                </select>
+              </label>
+              <button class="btn primary" type="submit">Generate Export</button>
+              <p class="utility-confirmation" id="exportConfirmation" hidden></p>
+            </form>
+          </section>
+          <section>
+            <h2>Import Review Queue</h2>
+            <p>Review staged imports before they are approved for production use.</p>
+            <div class="utility-status-list">
+              <div><strong>Pending validation</strong><span>0 files</span></div>
+              <div><strong>Ready for review</strong><span>0 files</span></div>
+              <div><strong>Import exceptions</strong><span>0 files</span></div>
+            </div>
+          </section>
+          <section>
+            <h2>Export History</h2>
+            <p>View export activity and generated files for review.</p>
+            <div class="utility-status-list">
+              <div><strong>Generated today</strong><span>0 files</span></div>
+              <div><strong>Scheduled exports</strong><span>0 jobs</span></div>
+              <div><strong>Failed exports</strong><span>0 files</span></div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="cpsm-navigation.js"></script>
+  <script src="utilities.js"></script>
+</body>
+</html>
