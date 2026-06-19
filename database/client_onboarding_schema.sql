@@ -1,6 +1,8 @@
 -- Momentum Data - Client Onboarding Database Schema
 -- Target: Supabase / PostgreSQL
--- Purpose: Store new client onboarding submissions from the onboarding form.
+-- Purpose: Store structured onboarding submissions while avoiding plaintext banking/tax storage.
+-- Production pattern: collect sensitive fields in the browser, submit to a secure server-side endpoint,
+-- encrypt the sensitive payload server-side, and store only encrypted payload + last-four references.
 
 create extension if not exists pgcrypto;
 
@@ -43,10 +45,9 @@ create table if not exists public.client_onboarding_submissions (
   target_due_date date,
   special_instructions text,
 
-  -- Tax information
+  -- Tax information references only
   taxpayer_legal_name text not null,
   tax_classification text not null,
-  federal_tax_id text not null,
   federal_tax_id_last4 text,
   tax_address_matches_business boolean not null default true,
   tax_address_line1 text,
@@ -56,14 +57,19 @@ create table if not exists public.client_onboarding_submissions (
   tax_zip text,
   backup_withholding_notes text,
 
-  -- Banking information
+  -- Banking information references only
   account_holder_name text not null,
   bank_name text not null,
-  routing_number text not null,
-  bank_account_number text not null,
+  routing_number_last4 text,
   bank_account_last4 text,
   account_type text not null,
   payment_authorization boolean not null default false,
+
+  -- Encrypted sensitive payload handled by a server-side function.
+  -- Payload may include full federal tax ID, routing number, and account number after encryption.
+  sensitive_payload_encrypted text,
+  sensitive_payload_algorithm text default 'server-side-encryption-required',
+  sensitive_payload_key_id text,
 
   -- Acknowledgements
   accuracy_acknowledgement boolean not null default false,
@@ -109,24 +115,15 @@ execute function public.set_client_onboarding_updated_at();
 
 alter table public.client_onboarding_submissions enable row level security;
 
--- Browser form policy: allow public insert only.
--- This is intended for a static website using a Supabase anon key.
--- Do NOT create public select/update/delete policies for sensitive banking or tax data.
-drop policy if exists "Allow public onboarding inserts" on public.client_onboarding_submissions;
-create policy "Allow public onboarding inserts"
-on public.client_onboarding_submissions
-for insert
-to anon
-with check (
-  status = 'submitted'
-  and payment_authorization = true
-  and accuracy_acknowledgement = true
-  and sensitive_data_acknowledgement = true
-);
+-- Direct anonymous inserts are intentionally not allowed for production sensitive intake.
+-- Submit through a server-side endpoint / Supabase Edge Function that validates, encrypts,
+-- and inserts using server-side credentials. Add authenticated admin read policies only after
+-- an admin portal is built.
 
 -- Recommended production hardening:
--- 1. Replace direct browser insert with a Supabase Edge Function.
--- 2. Encrypt federal_tax_id and bank_account_number before insert.
--- 3. Store only last four digits in standard operational views.
--- 4. Add an authenticated admin-only read policy when an admin portal is built.
--- 5. Never expose the Supabase service_role key in browser code.
+-- 1. Route form submissions through a Supabase Edge Function.
+-- 2. Encrypt federal tax ID, routing number, and account number server-side.
+-- 3. Store only last-four values in normal operational columns.
+-- 4. Never expose the Supabase service_role key in browser code.
+-- 5. Keep Row Level Security enabled and avoid public select/update/delete policies.
+-- 6. Add audit logging before allowing admin reads of sensitive records.
