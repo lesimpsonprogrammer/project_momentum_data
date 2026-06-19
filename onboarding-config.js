@@ -1,8 +1,6 @@
-// Momentum Data onboarding database configuration.
-// Replace the placeholder values with your Supabase project URL and public anon key.
+// Momentum Data onboarding submission configuration.
+// Replace the placeholder endpoint with your secure server-side endpoint / Supabase Edge Function URL.
 // Important: never place a Supabase service_role key in this browser file.
 window.MOMENTUM_ONBOARDING_CONFIG = {
-  supabaseUrl: 'https://YOUR-PROJECT-REF.supabase.co',
-  supabaseAnonKey: 'YOUR-SUPABASE-ANON-KEY',
-  tableName: 'client_onboarding_submissions'
+  submissionEndpoint: 'https://YOUR-PROJECT-REF.supabase.co/functions/v1/submit-client-onboarding'
 };
