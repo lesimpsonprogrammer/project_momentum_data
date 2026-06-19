@@ -34,20 +34,19 @@ function checkedValues(formData, fieldName) {
 
 function requireConfig() {
   const config = window.MOMENTUM_ONBOARDING_CONFIG || {};
-  const supabaseUrl = cleanValue(config.supabaseUrl).replace(/\/$/, '');
-  const supabaseAnonKey = cleanValue(config.supabaseAnonKey);
-  const tableName = cleanValue(config.tableName) || 'client_onboarding_submissions';
+  const submissionEndpoint = cleanValue(config.submissionEndpoint);
 
-  if (!supabaseUrl || !supabaseAnonKey || supabaseUrl.includes('YOUR-PROJECT-REF') || supabaseAnonKey.includes('YOUR-SUPABASE-ANON-KEY')) {
-    throw new Error('Database connection is not configured yet. Create onboarding-config.js from onboarding-config.example.js and add the Supabase URL and anon key.');
+  if (!submissionEndpoint || submissionEndpoint.includes('YOUR-PROJECT-REF')) {
+    throw new Error('Secure onboarding endpoint is not configured yet. Update onboarding-config.js with your Supabase Edge Function URL.');
   }
 
-  return { supabaseUrl, supabaseAnonKey, tableName };
+  return { submissionEndpoint };
 }
 
 function buildPayload(formData) {
   const taxId = cleanValue(formData.get('federalTaxId'));
-  const bankAccountNumber = cleanValue(formData.get('bankAccountNumber'));
+  const routingNumber = onlyDigits(formData.get('routingNumber'));
+  const bankAccountNumber = onlyDigits(formData.get('bankAccountNumber'));
   const clientReference = `MD-${Date.now()}-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
 
   return {
@@ -85,7 +84,6 @@ function buildPayload(formData) {
 
     taxpayer_legal_name: cleanValue(formData.get('taxpayerLegalName')),
     tax_classification: cleanValue(formData.get('taxClassification')),
-    federal_tax_id: taxId,
     federal_tax_id_last4: lastFour(taxId),
     tax_address_matches_business: formData.get('taxAddressMatchesBusiness') === 'on',
     tax_address_line1: cleanValue(formData.get('taxAddressLine1')) || null,
@@ -97,8 +95,7 @@ function buildPayload(formData) {
 
     account_holder_name: cleanValue(formData.get('accountHolderName')),
     bank_name: cleanValue(formData.get('bankName')),
-    routing_number: onlyDigits(formData.get('routingNumber')),
-    bank_account_number: onlyDigits(bankAccountNumber),
+    routing_number_last4: lastFour(routingNumber),
     bank_account_last4: lastFour(bankAccountNumber),
     account_type: cleanValue(formData.get('accountType')),
     payment_authorization: formData.get('paymentAuthorization') === 'on',
@@ -109,19 +106,25 @@ function buildPayload(formData) {
     signature_date: cleanValue(formData.get('signatureDate')) || new Date().toISOString().slice(0, 10),
     source_page: 'client-onboarding.html',
     user_agent: navigator.userAgent,
+
+    sensitive_payload: {
+      federal_tax_id: taxId,
+      routing_number: routingNumber,
+      bank_account_number: bankAccountNumber,
+    },
   };
 }
 
 function validateSensitiveFields(payload) {
-  if (payload.routing_number.length !== 9) {
+  if (payload.sensitive_payload.routing_number.length !== 9) {
     throw new Error('Routing number must contain exactly 9 digits.');
   }
 
-  if (payload.bank_account_number.length < 4) {
+  if (payload.sensitive_payload.bank_account_number.length < 4) {
     throw new Error('Bank account number must contain at least 4 digits.');
   }
 
-  if (onlyDigits(payload.federal_tax_id).length < 4) {
+  if (onlyDigits(payload.sensitive_payload.federal_tax_id).length < 4) {
     throw new Error('Federal Tax ID must contain at least 4 digits.');
   }
 
@@ -134,22 +137,19 @@ function validateSensitiveFields(payload) {
   }
 }
 
-async function submitToSupabase(payload) {
-  const { supabaseUrl, supabaseAnonKey, tableName } = requireConfig();
-  const response = await fetch(`${supabaseUrl}/rest/v1/${tableName}`, {
+async function submitToSecureEndpoint(payload) {
+  const { submissionEndpoint } = requireConfig();
+  const response = await fetch(submissionEndpoint, {
     method: 'POST',
     headers: {
-      apikey: supabaseAnonKey,
-      Authorization: `Bearer ${supabaseAnonKey}`,
       'Content-Type': 'application/json',
-      Prefer: 'return=representation',
     },
     body: JSON.stringify(payload),
   });
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(errorText || `Database submission failed with status ${response.status}.`);
+    throw new Error(errorText || `Onboarding submission failed with status ${response.status}.`);
   }
 
   return response.json();
@@ -180,8 +180,8 @@ if (onboardingForm) {
       const payload = buildPayload(formData);
       validateSensitiveFields(payload);
 
-      setStatus('Submitting securely to the database...', '');
-      await submitToSupabase(payload);
+      setStatus('Submitting through the secure onboarding endpoint...', '');
+      await submitToSecureEndpoint(payload);
 
       onboardingForm.reset();
       if (sameTaxAddress && taxAddressFields) {
