@@ -8,6 +8,11 @@
   perspective: 1200px;
 }
 
+.hero-visual-energy.hero-image-stage::before,
+.hero-visual-energy.hero-image-stage::after {
+  display: none !important;
+}
+
 .hero-image-card {
   position: relative;
   width: min(100%, 760px);
