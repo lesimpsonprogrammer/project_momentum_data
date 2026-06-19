@@ -1,0 +1,74 @@
+/* Home page horizontal hero image banner */
+body:not(.login-page) .hero {
+  min-height: 50vh !important;
+  height: 50vh !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  background:
+    linear-gradient(90deg, rgba(5, 14, 35, 0.72) 0%, rgba(5, 14, 35, 0.42) 34%, rgba(5, 14, 35, 0.03) 64%),
+    url("assets/home-data-extraction-hero.svg") center center / cover no-repeat !important;
+}
+
+body:not(.login-page) .hero::before,
+body:not(.login-page) .hero::after,
+body:not(.login-page) .hero .hero-grid::after,
+body:not(.login-page) .hero-visual-energy {
+  display: none !important;
+}
+
+body:not(.login-page) .hero .hero-grid {
+  min-height: 50vh !important;
+  width: min(1440px, calc(100% - 48px)) !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(300px, 0.72fr) minmax(220px, 1fr) !important;
+  align-items: center !important;
+}
+
+body:not(.login-page) .hero .hero-copy {
+  max-width: 610px !important;
+  margin: 0 !important;
+  padding: clamp(1.25rem, 2.2vw, 2.25rem) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 1.35rem !important;
+  background: rgba(5, 14, 35, 0.36) !important;
+  backdrop-filter: blur(3px) !important;
+  transform: none !important;
+}
+
+body:not(.login-page) .hero h1 {
+  max-width: 560px !important;
+  margin-bottom: 18px !important;
+  color: #ffffff !important;
+  font-size: clamp(2.25rem, 4.6vw, 4.75rem) !important;
+  line-height: 0.98 !important;
+}
+
+body:not(.login-page) .hero-subtitle {
+  max-width: 480px !important;
+  color: rgba(255, 255, 255, 0.96) !important;
+}
+
+body:not(.login-page) .hero .hero-actions {
+  margin-top: 24px !important;
+}
+
+@media (max-width: 900px) {
+  body:not(.login-page) .hero {
+    height: auto !important;
+    min-height: 50vh !important;
+  }
+
+  body:not(.login-page) .hero .hero-grid {
+    grid-template-columns: 1fr !important;
+    padding: 2rem 0 !important;
+  }
+
+  body:not(.login-page) .hero .hero-copy {
+    max-width: 100% !important;
+  }
+}
