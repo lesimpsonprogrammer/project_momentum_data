@@ -4,30 +4,34 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Client Log-in | Momentum Data Solutions</title>
+  <title>CPSM Client Log-in | Momentum Data Solutions</title>
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;display=swap"
     rel="stylesheet" />
   <link href="assets/favicon.svg" rel="icon" type="image/svg+xml" />
   <link href="styles.css" rel="stylesheet" />
+  <link href="cpsm.css" rel="stylesheet" />
   <link href="client-login-visual.css" rel="stylesheet" />
 </head>
 
-<body class="login-page">
+<body class="login-page cpsm-login-page">
+  <div class="cpsm-top-banner cpsm-login-top-banner">
+    <div class="container"><span>Client Portfolio Service Manager, A Momentum Data Solutions Software Company</span></div>
+  </div>
   <main class="login-split-screen">
     <section class="login-visual-panel" aria-label="Client portfolio preview">
       <div class="login-visual-overlay">
-        <h1>Welcome to Client Portfolio</h1>
-        <p>Stay connected to every project update. Access status updates, deliverables, and Project Manager messages
-          from one secure hub.</p>
+        <p class="tile-kicker">Client Portfolio Service Manager</p>
+        <h1>Welcome to CPSM</h1>
+        <p>Access your dashboard, portfolio, requests, documents, messages, agreements, and settings from one secure client portal.</p>
       </div>
     </section>
 
     <section class="login-form-panel" aria-labelledby="login-title">
       <div class="login-form-stack">
-        <div class="login-card">
-          <h2 id="login-title">Log into Client Portfolio</h2>
+        <div class="login-card cpsm-login-card-no-logo">
+          <h2 id="login-title">Client log-in</h2>
 
           <form id="loginPageForm" class="login-form">
             <label for="clientId">
@@ -41,14 +45,14 @@
             </label>
 
             <label for="password">
-              Password:
-              <input id="password" name="password" type="password" placeholder="Password" required />
+              Access Code:
+              <input id="password" name="password" type="password" placeholder="Access Code" required />
             </label>
 
             <button class="btn primary full" type="submit">Log In</button>
           </form>
         </div>
-        <p class="portfolio-update-note">Notification of Scheduled Maintenance: Client Portfolio Service Manager (CP&#83;M) will undergo scheduled update on July 24, 2026. Users may continue to utilize CP&#83;M, but may experience intermittent and or lagging business processes.</p>
+        <p class="portfolio-update-note">After log-in, clients must accept the required agreements before entering the dashboard.</p>
       </div>
     </section>
   </main>
