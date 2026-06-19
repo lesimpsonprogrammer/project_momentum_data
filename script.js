@@ -1,11 +1,13 @@
-const visualAdjustmentsHref = 'site-visual-adjustments.css';
+const visualAdjustmentHrefs = ['site-visual-adjustments.css', 'home-visual-banner.css'];
 
-if (!document.querySelector(`link[href="${visualAdjustmentsHref}"]`)) {
-  const visualAdjustmentsLink = document.createElement('link');
-  visualAdjustmentsLink.rel = 'stylesheet';
-  visualAdjustmentsLink.href = visualAdjustmentsHref;
-  document.head.appendChild(visualAdjustmentsLink);
-}
+visualAdjustmentHrefs.forEach((href) => {
+  if (!document.querySelector(`link[href="${href}"]`)) {
+    const visualAdjustmentsLink = document.createElement('link');
+    visualAdjustmentsLink.rel = 'stylesheet';
+    visualAdjustmentsLink.href = href;
+    document.head.appendChild(visualAdjustmentsLink);
+  }
+});
 
 const momentumLogoSrc = 'assets/momentum-data-logo-transparent.svg';
 
