@@ -1,4 +1,9 @@
 /* Client Portfolio login visual override */
+.cpsm-login-top-banner .container {
+  justify-content: center;
+  text-align: center;
+}
+
 .login-visual-panel {
   background-image:
     linear-gradient(180deg, rgba(11, 31, 58, 0.08), rgba(11, 31, 58, 0.42)),
@@ -15,9 +20,19 @@
   backdrop-filter: blur(2px);
 }
 
-.login-visual-overlay p {
+.login-visual-overlay p:not(.tile-kicker) {
   margin-top: 1.75rem !important;
   transform: translateY(18px);
+}
+
+.login-card img,
+.login-card .brand,
+.login-card .brand-logo,
+.login-card .brand-text-logo,
+.login-card .login-logo,
+.login-card .login-card-logo,
+.cpsm-login-card-no-logo img {
+  display: none !important;
 }
 
 .login-form-stack {
@@ -37,7 +52,7 @@
 }
 
 .login-page::after {
-  content: "Client Portfolio Service Manager, a Momentum Data Solutions Software Company.";
+  content: "Client Portfolio Service Manager, A Momentum Data Solutions Software Company.";
   position: fixed;
   left: 0;
   right: 0;
