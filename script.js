@@ -1,6 +1,4 @@
 const visualAdjustmentsHref = 'site-visual-adjustments.css';
-const heroImageStylesHref = 'hero-image.css?v=data-extraction-20260618';
-const dataExtractionHeroSrc = 'assets/data-extraction-hero.svg';
 
 if (!document.querySelector(`link[href="${visualAdjustmentsHref}"]`)) {
   const visualAdjustmentsLink = document.createElement('link');
@@ -8,57 +6,6 @@ if (!document.querySelector(`link[href="${visualAdjustmentsHref}"]`)) {
   visualAdjustmentsLink.href = visualAdjustmentsHref;
   document.head.appendChild(visualAdjustmentsLink);
 }
-
-if (!document.querySelector(`link[href="${heroImageStylesHref}"]`)) {
-  const heroImageStylesLink = document.createElement('link');
-  heroImageStylesLink.rel = 'stylesheet';
-  heroImageStylesLink.href = heroImageStylesHref;
-  document.head.appendChild(heroImageStylesLink);
-}
-
-function applyDataExtractionHero() {
-  const heroVisual = document.querySelector('.hero-visual-energy');
-
-  if (!heroVisual || heroVisual.querySelector('.hero-image-card')) return;
-
-  heroVisual.classList.add('hero-image-stage');
-  heroVisual.removeAttribute('aria-hidden');
-  heroVisual.innerHTML = `
-    <div class="hero-image-card" data-hero-card>
-      <img src="${dataExtractionHeroSrc}" alt="Data extraction process from spreadsheets, documents, PDFs, cloud apps, email, databases, APIs, and web data feeds into dashboards, analytics, reports, and structured data." loading="eager" decoding="async" />
-      <span class="hero-particle hero-particle-one"></span>
-      <span class="hero-particle hero-particle-two"></span>
-      <span class="hero-particle hero-particle-three"></span>
-    </div>
-  `;
-
-  const heroCard = heroVisual.querySelector('[data-hero-card]');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (!heroCard || reduceMotion) return;
-
-  const handleMouseMove = (event) => {
-    const rect = heroVisual.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-
-    const rotateX = ((y / rect.height) - 0.5) * -6;
-    const rotateY = ((x / rect.width) - 0.5) * 6;
-
-    heroCard.style.animation = 'none';
-    heroCard.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.015)`;
-  };
-
-  const resetHero = () => {
-    heroCard.style.transform = '';
-    heroCard.style.animation = '';
-  };
-
-  heroVisual.addEventListener('mousemove', handleMouseMove);
-  heroVisual.addEventListener('mouseleave', resetHero);
-}
-
-applyDataExtractionHero();
 
 const momentumLogoSrc = 'assets/momentum-data-logo-transparent.svg';
 

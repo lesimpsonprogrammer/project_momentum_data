@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta
+    content="Momentum Data new client onboarding form for collecting company, project, tax, and banking information in an organized workflow."
+    name="description" />
+  <title>Client Onboarding | Momentum Data Solutions</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link href="assets/favicon.svg" rel="icon" type="image/svg+xml" />
+  <link href="styles.css" rel="stylesheet" />
+  <link href="onboarding.css" rel="stylesheet" />
+</head>
+
+<body class="onboarding-body">
+  <main class="onboarding-main">
+    <div class="onboarding-shell">
+      <header class="onboarding-header">
+        <div>
+          <a class="onboarding-kicker" href="index.html">← Momentum Data Solutions</a>
+          <h1>New Client Onboarding</h1>
+          <p>
+            Complete one organized form to help us set up your client profile, project details, banking information,
+            and tax information. Once submitted, the information is stored in the onboarding database for internal
+            review and project kickoff.
+          </p>
+          <p class="required-note">Fields marked with an asterisk are required.</p>
+        </div>
+
+        <aside class="onboarding-process-card" aria-label="Client onboarding workflow summary">
+          <h2>Client Onboarding Workflow</h2>
+          <ol class="workflow-list">
+            <li><span>1</span><div><strong>Submit onboarding form</strong>Company, contacts, project scope, tax, and banking details.</div></li>
+            <li><span>2</span><div><strong>Database capture</strong>The submission is saved as a structured onboarding record.</div></li>
+            <li><span>3</span><div><strong>Internal review</strong>Momentum Data confirms details and identifies missing items.</div></li>
+            <li><span>4</span><div><strong>Project kickoff</strong>The client record moves into an active project workflow.</div></li>
+          </ol>
+        </aside>
+      </header>
+
+      <section class="onboarding-form-card" aria-labelledby="onboardingFormTitle">
+        <div class="onboarding-form-toolbar">
+          <div>
+            <strong id="onboardingFormTitle">Organized client setup form</strong>
+            <p>For production use, complete the Supabase setup and secure database policies first.</p>
+          </div>
+          <a href="docs/client-onboarding-business-process.md">View process document</a>
+        </div>
+
+        <form class="onboarding-form" id="clientOnboardingForm">
+          <fieldset class="form-section">
+            <legend>1. Company Information</legend>
+            <p class="section-note">Use the official legal name and address that should appear in the client record.</p>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="legalBusinessName">Legal business name *</label>
+                <input id="legalBusinessName" name="legalBusinessName" required type="text" />
+              </div>
+              <div class="form-field">
+                <label for="dbaName">DBA / trade name</label>
+                <input id="dbaName" name="dbaName" type="text" />
+              </div>
+              <div class="form-field">
+                <label for="entityType">Entity type *</label>
+                <select id="entityType" name="entityType" required>
+                  <option value="">Select entity type</option>
+                  <option>Corporation</option>
+                  <option>LLC</option>
+                  <option>Partnership</option>
+                  <option>Sole Proprietor</option>
+                  <option>Nonprofit</option>
+                  <option>Government / Public Sector</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="website">Website</label>
+                <input id="website" name="website" placeholder="https://example.com" type="url" />
+              </div>
+              <div class="form-field full">
+                <label for="businessAddressLine1">Business address line 1 *</label>
+                <input id="businessAddressLine1" name="businessAddressLine1" required type="text" />
+              </div>
+              <div class="form-field full">
+                <label for="businessAddressLine2">Business address line 2</label>
+                <input id="businessAddressLine2" name="businessAddressLine2" type="text" />
+              </div>
+            </div>
+            <div class="form-grid three">
+              <div class="form-field">
+                <label for="businessCity">City *</label>
+                <input id="businessCity" name="businessCity" required type="text" />
+              </div>
+              <div class="form-field">
+                <label for="businessState">State *</label>
+                <input id="businessState" maxlength="40" name="businessState" required type="text" />
+              </div>
+              <div class="form-field">
+                <label for="businessZip">ZIP / postal code *</label>
+                <input id="businessZip" name="businessZip" required type="text" />
+              </div>
+              <div class="form-field">
+                <label for="businessCountry">Country *</label>
+                <input id="businessCountry" name="businessCountry" required type="text" value="United States" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend>2. Contacts</legend>
+            <p class="section-note">Provide the best contact for onboarding questions and an optional billing contact.</p>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="primaryContactName">Primary contact name *</label>
+                <input id="primaryContactName" name="primaryContactName" required type="text" />
+              </div>
+              <div class="form-field">
+                <label for="primaryContactTitle">Primary contact title</label>
+                <input id="primaryContactTitle" name="primaryContactTitle" type="text" />
+              </div>
+              <div class="form-field">
+                <label for="primaryContactEmail">Primary contact email *</label>
+                <input id="primaryContactEmail" name="primaryContactEmail" required type="email" />
+              </div>
+              <div class="form-field">
+                <label for="primaryContactPhone">Primary contact phone *</label>
+                <input id="primaryContactPhone" name="primaryContactPhone" required type="tel" />
+              </div>
+              <div class="form-field">
+                <label for="billingContactName">Billing contact name</label>
+                <input id="billingContactName" name="billingContactName" type="text" />
+              </div>
+              <div class="form-field">
+                <label for="billingContactEmail">Billing contact email</label>
+                <input id="billingContactEmail" name="billingContactEmail" type="email" />
+              </div>
+              <div class="form-field">
+                <label for="billingContactPhone">Billing contact phone</label>
+                <input id="billingContactPhone" name="billingContactPhone" type="tel" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend>3. Project Setup</legend>
+            <p class="section-note">Tell us what type of data, files, and systems you need help with.</p>
+            <div class="form-field full">
+              <span class="checkbox-group-title">Requested services *</span>
+              <div class="checkbox-grid">
+                <label class="checkbox-card"><input name="requestedServices" type="checkbox" value="Document / PDF data extraction" /> Document / PDF extraction</label>
+                <label class="checkbox-card"><input name="requestedServices" type="checkbox" value="Spreadsheet cleanup" /> Spreadsheet cleanup</label>
+                <label class="checkbox-card"><input name="requestedServices" type="checkbox" value="Excel reporting or dashboard" /> Excel reporting / dashboard</label>
+                <label class="checkbox-card"><input name="requestedServices" type="checkbox" value="Data migration support" /> Data migration support</label>
+                <label class="checkbox-card"><input name="requestedServices" type="checkbox" value="Workflow automation" /> Workflow automation</label>
+                <label class="checkbox-card"><input name="requestedServices" type="checkbox" value="HCM / payroll data support" /> HCM / payroll support</label>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="currentSystems">Current systems</label>
+                <input id="currentSystems" name="currentSystems" placeholder="Example: ADP, Paylocity, QuickBooks, Excel" type="text" />
+              </div>
+              <div class="form-field">
+                <label for="fileTypes">File types</label>
+                <input id="fileTypes" name="fileTypes" placeholder="PDF, Excel, CSV, screenshots, exports" type="text" />
+              </div>
+              <div class="form-field full">
+                <label for="dataSources">Data sources</label>
+                <textarea id="dataSources" name="dataSources" placeholder="List the documents, systems, exports, or reports involved."></textarea>
+              </div>
+              <div class="form-field full">
+                <label for="desiredOutputs">Desired output</label>
+                <textarea id="desiredOutputs" name="desiredOutputs" placeholder="Example: cleaned Excel file, CSV import template, dashboard, monthly reporting workflow."></textarea>
+              </div>
+              <div class="form-field full">
+                <label for="projectGoal">Main project goal *</label>
+                <textarea id="projectGoal" name="projectGoal" required placeholder="Briefly describe what success looks like for this project."></textarea>
+              </div>
+            </div>
+            <div class="form-grid three">
+              <div class="form-field">
+                <label for="targetStartDate">Target start date</label>
+                <input id="targetStartDate" name="targetStartDate" type="date" />
+              </div>
+              <div class="form-field">
+                <label for="targetDueDate">Target due date</label>
+                <input id="targetDueDate" name="targetDueDate" type="date" />
+              </div>
+              <div class="form-field">
+                <label for="specialInstructions">Special instructions</label>
+                <input id="specialInstructions" name="specialInstructions" type="text" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend>4. Tax Information</legend>
+            <div class="sensitive-banner">
+              <strong>Sensitive information notice</strong>
+              <span>Tax and banking information should only be submitted after database security, row-level security, and HTTPS are configured.</span>
+            </div>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="taxpayerLegalName">Taxpayer legal name *</label>
+                <input id="taxpayerLegalName" name="taxpayerLegalName" required type="text" />
+              </div>
+              <div class="form-field">
+                <label for="taxClassification">Tax classification *</label>
+                <select id="taxClassification" name="taxClassification" required>
+                  <option value="">Select tax classification</option>
+                  <option>Individual / Sole Proprietor</option>
+                  <option>C Corporation</option>
+                  <option>S Corporation</option>
+                  <option>Partnership</option>
+                  <option>Trust / Estate</option>
+                  <option>LLC - C Corp</option>
+                  <option>LLC - S Corp</option>
+                  <option>LLC - Partnership</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="federalTaxId">Federal Tax ID / EIN / SSN *</label>
+                <input autocomplete="off" id="federalTaxId" name="federalTaxId" required type="password" />
+              </div>
+              <div class="form-field full">
+                <label class="acknowledgement-row"><input checked id="taxAddressMatchesBusiness" name="taxAddressMatchesBusiness" type="checkbox" /> Tax address is the same as the business address.</label>
+              </div>
+            </div>
+            <div class="form-grid" hidden id="taxAddressFields">
+              <div class="form-field full">
+                <label for="taxAddressLine1">Tax address line 1</label>
+                <input data-required-when-visible="true" id="taxAddressLine1" name="taxAddressLine1" type="text" />
+              </div>
+              <div class="form-field full">
+                <label for="taxAddressLine2">Tax address line 2</label>
+                <input id="taxAddressLine2" name="taxAddressLine2" type="text" />
+              </div>
+              <div class="form-field">
+                <label for="taxCity">Tax city</label>
+                <input data-required-when-visible="true" id="taxCity" name="taxCity" type="text" />
+              </div>
+              <div class="form-field">
+                <label for="taxState">Tax state</label>
+                <input data-required-when-visible="true" id="taxState" name="taxState" type="text" />
+              </div>
+              <div class="form-field">
+                <label for="taxZip">Tax ZIP</label>
+                <input data-required-when-visible="true" id="taxZip" name="taxZip" type="text" />
+              </div>
+            </div>
+            <div class="form-field full">
+              <label for="backupWithholdingNotes">Backup withholding / exemption notes</label>
+              <textarea id="backupWithholdingNotes" name="backupWithholdingNotes"></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend>5. Banking Information</legend>
+            <p class="section-note">This section is intended for payment setup. Confirm all account details before submitting.</p>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="accountHolderName">Account holder name *</label>
+                <input id="accountHolderName" name="accountHolderName" required type="text" />
+              </div>
+              <div class="form-field">
+                <label for="bankName">Bank name *</label>
+                <input id="bankName" name="bankName" required type="text" />
+              </div>
+              <div class="form-field">
+                <label for="routingNumber">Routing number *</label>
+                <input autocomplete="off" id="routingNumber" maxlength="9" name="routingNumber" pattern="[0-9]{9}" required type="password" />
+              </div>
+              <div class="form-field">
+                <label for="bankAccountNumber">Account number *</label>
+                <input autocomplete="off" id="bankAccountNumber" name="bankAccountNumber" required type="password" />
+              </div>
+              <div class="form-field">
+                <label for="accountType">Account type *</label>
+                <select id="accountType" name="accountType" required>
+                  <option value="">Select account type</option>
+                  <option>Checking</option>
+                  <option>Savings</option>
+                  <option>Business Checking</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend>6. Authorization and Signature</legend>
+            <div class="acknowledgements">
+              <label class="acknowledgement-row"><input name="paymentAuthorization" required type="checkbox" /> I authorize Momentum Data Solutions to use the banking information provided for approved payment, billing, refund, or client-account setup purposes.</label>
+              <label class="acknowledgement-row"><input name="accuracyAcknowledgement" required type="checkbox" /> I certify that the information submitted is accurate to the best of my knowledge.</label>
+              <label class="acknowledgement-row"><input name="sensitiveDataAcknowledgement" required type="checkbox" /> I understand this form contains sensitive tax and banking information and should be submitted only through the secured onboarding workflow.</label>
+            </div>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="signatureName">Authorized signer name *</label>
+                <input id="signatureName" name="signatureName" required type="text" />
+              </div>
+              <div class="form-field">
+                <label for="signatureDate">Signature date *</label>
+                <input id="signatureDate" name="signatureDate" required type="date" />
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button class="submit-button" id="onboardingSubmit" type="submit">Submit onboarding information</button>
+            <p aria-live="polite" class="form-status" id="onboardingStatus"></p>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container copyright">
+      <span>© <span id="year"></span> Momentum Data Solutions. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="onboarding-config.js"></script>
+  <script src="onboarding.js"></script>
+</body>
+
+</html>
