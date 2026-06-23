@@ -1,28 +1,88 @@
 /* Client Portfolio login visual override */
+body.login-page.cpsm-login-page {
+  min-height: 100vh;
+  background: #ffffff !important;
+}
+
+.cpsm-login-top-banner {
+  position: relative;
+  z-index: 20;
+  background: #0b1f3a !important;
+  color: #ffffff !important;
+}
+
 .cpsm-login-top-banner .container {
   justify-content: center;
   text-align: center;
 }
 
+.login-split-screen {
+  min-height: calc(100vh - 34px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr) !important;
+}
+
 .login-visual-panel {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: calc(100vh - 34px) !important;
+  padding: clamp(2.25rem, 5vw, 4.5rem) !important;
   background-image:
-    linear-gradient(180deg, rgba(11, 31, 58, 0.08), rgba(11, 31, 58, 0.42)),
+    linear-gradient(180deg, rgba(11, 31, 58, 0.04), rgba(11, 31, 58, 0.46)),
     url("assets/client-portfolio-etl-visual.svg") !important;
   background-position: center !important;
   background-size: cover !important;
+  background-repeat: no-repeat !important;
 }
 
 .login-visual-overlay {
-  max-width: 620px;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  border-radius: 1.25rem;
-  background: rgba(3, 15, 42, 0.22);
-  backdrop-filter: blur(2px);
+  max-width: 620px !important;
+  padding: clamp(1.5rem, 3vw, 2.5rem) !important;
+  border-radius: 1.25rem !important;
+  background: rgba(3, 15, 42, 0.22) !important;
+  backdrop-filter: blur(2px) !important;
+}
+
+.login-visual-overlay h1 {
+  color: #ffffff !important;
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.55) !important;
+}
+
+.login-visual-overlay p,
+.login-visual-overlay .tile-kicker {
+  color: #ffffff !important;
 }
 
 .login-visual-overlay p:not(.tile-kicker) {
   margin-top: 1.75rem !important;
   transform: translateY(18px);
+}
+
+.login-form-panel {
+  display: grid !important;
+  align-items: center !important;
+  justify-items: center !important;
+  min-height: calc(100vh - 34px) !important;
+  padding: clamp(2rem, 5vw, 4rem) !important;
+  background: #ffffff !important;
+}
+
+.login-form-stack {
+  width: min(100%, 470px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.login-form-panel .login-card {
+  width: 100% !important;
+  padding: clamp(1.75rem, 4vw, 2.35rem) !important;
+  border: 3px solid #0b2f8f !important;
+  border-radius: var(--radius) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  box-shadow: var(--shadow) !important;
 }
 
 .login-card img,
@@ -35,20 +95,14 @@
   display: none !important;
 }
 
-.login-form-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .portfolio-update-note {
-  width: 100%;
-  max-width: 560px;
+  width: 100% !important;
+  max-width: 560px !important;
   margin: 3.25rem auto 0 !important;
   color: var(--blue-dark) !important;
   font-weight: 400 !important;
   text-align: center !important;
-  line-height: 1.5;
+  line-height: 1.5 !important;
 }
 
 .login-page::after {
@@ -66,4 +120,19 @@
   letter-spacing: 0.02em;
   text-align: center;
   border-top: 1px solid rgba(176, 184, 196, 0.55);
+}
+
+@media (max-width: 900px) {
+  .login-split-screen {
+    grid-template-columns: 1fr !important;
+  }
+
+  .login-visual-panel,
+  .login-form-panel {
+    min-height: auto !important;
+  }
+
+  .login-visual-panel {
+    min-height: 44vh !important;
+  }
 }
