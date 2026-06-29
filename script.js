@@ -257,8 +257,34 @@ if (portalMessageForm && messageConfirmation) {
 }
 
 if (loginPageForm) {
+  const loginEmailInput = loginPageForm.querySelector('#userName');
+  const passwordStep = loginPageForm.querySelector('.password-step');
+  const passwordInput = loginPageForm.querySelector('#password');
+
+  function updatePasswordStep() {
+    if (!passwordStep || !loginEmailInput) return;
+    const hasEmail = loginEmailInput.value.trim().length > 0;
+    passwordStep.hidden = !hasEmail;
+
+    if (!hasEmail && passwordInput) {
+      passwordInput.value = '';
+    }
+  }
+
+  if (loginEmailInput && passwordStep) {
+    updatePasswordStep();
+    loginEmailInput.addEventListener('input', updatePasswordStep);
+    loginEmailInput.addEventListener('change', updatePasswordStep);
+  }
+
   loginPageForm.addEventListener('submit', (event) => {
     event.preventDefault();
+
+    if (passwordStep?.hidden) {
+      updatePasswordStep();
+      return;
+    }
+
     const formData = new FormData(loginPageForm);
     const userName = String(formData.get('userName') || 'Client').trim() || 'Client';
     const clientId = String(formData.get('clientId') || 'Momentum Data client').trim() || 'Momentum Data client';
