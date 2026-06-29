@@ -21,10 +21,16 @@
   </div>
   <main class="login-split-screen">
     <section class="login-visual-panel" aria-label="Client portfolio preview">
+      <div class="cpsm-command-visual" aria-hidden="true">
+        <span class="flow-line flow-line-one">CLIENT DATA • WORKFLOWS • DOCUMENTS • STATUS</span>
+        <span class="flow-line flow-line-two">VALIDATION • AGREEMENTS • REQUESTS • PORTFOLIO</span>
+        <span class="flow-line flow-line-three">0101 • CPSM • 1100 • SECURE ACCESS</span>
+        <span class="flow-line flow-line-four">PROJECTS • MILESTONES • ACTIONS • DELIVERY</span>
+      </div>
       <div class="login-visual-overlay">
-        <p class="tile-kicker">Client Portfolio Service Manager</p>
+        <p class="tile-kicker">Secure Project Command Center</p>
         <h1>Welcome to CPSM</h1>
-        <p>Access your dashboard, portfolio, requests, documents, messages, agreements, and settings from one secure client portal.</p>
+        <p>Track project movement, client actions, documents, deliverables, and portfolio updates from one secure workspace.</p>
       </div>
     </section>
 
@@ -40,11 +46,11 @@
             </label>
 
             <label for="userName">
-              User Name:
-              <input id="userName" name="userName" type="text" placeholder="User Name" required />
+              Email:
+              <input id="userName" name="userName" type="email" placeholder="Email" autocomplete="email" required />
             </label>
 
-            <label for="password">
+            <label for="password" class="password-step" hidden>
               Access Code:
               <input id="password" name="password" type="password" placeholder="Access Code" required />
             </label>
