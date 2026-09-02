@@ -22,3 +22,9 @@ pnpm-debug.log*
 .DS_Store
 .vscode/*
 !.vscode/launch.json
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+dbt/profiles.yml

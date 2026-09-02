@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: dim_clients
+    description: One row per client (deduplicated business profile), keyed by client_reference.
+    columns:
+      - name: client_reference
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_onboarding_submissions
+    description: One row per onboarding submission, for funnel/pipeline analysis.
+    columns:
+      - name: submission_id
+        tests:
+          - unique
+          - not_null
+      - name: client_reference
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_clients')
+              field: client_reference
+
+  - name: mart_onboarding_status_summary
+    description: Submission counts and pipeline aging by status, for a status dashboard.
+    columns:
+      - name: status
+        tests:
+          - unique
+          - not_null
