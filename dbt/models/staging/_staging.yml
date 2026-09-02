@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_client_onboarding_submissions
+    description: Cleaned, renamed onboarding submissions with sensitive fields excluded.
+    columns:
+      - name: submission_id
+        tests:
+          - unique
+          - not_null
+      - name: client_reference
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - submitted
+                - under_review
+                - needs_follow_up
+                - approved_for_kickoff
+                - project_created

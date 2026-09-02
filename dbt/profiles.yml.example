@@ -1,0 +1,16 @@
+# Copy to ~/.dbt/profiles.yml (or set DBT_PROFILES_DIR to this dbt/ folder)
+# and fill in real values via environment variables. Never commit real
+# credentials or a populated profiles.yml.
+momentum_data_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('SUPABASE_DB_HOST') }}"
+      user: "{{ env_var('SUPABASE_DB_USER') }}"
+      password: "{{ env_var('SUPABASE_DB_PASSWORD') }}"
+      port: "{{ env_var('SUPABASE_DB_PORT', '5432') | as_number }}"
+      dbname: "{{ env_var('SUPABASE_DB_NAME', 'postgres') }}"
+      schema: public
+      threads: 4
+      sslmode: require
